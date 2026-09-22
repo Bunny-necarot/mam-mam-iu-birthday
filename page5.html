@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Măm Măm Iu — Things I Love About You</title>
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Arial", sans-serif;
+    color: #5b4652;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fffafb 0%,
+            #fff0f5 35%,
+            #ffffff 70%,
+            #fff3f7 100%
+        );
+
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+
+/* =========================
+   FAIRY DUST
+========================= */
+
+.sparkle {
+    position: fixed;
+
+    width: 5px;
+    height: 5px;
+
+    background: #f6b6cb;
+
+    border-radius: 50%;
+
+    opacity: 0.5;
+
+    pointer-events: none;
+
+    animation: sparkleFloat 6s infinite ease-in-out;
+
+    z-index: 0;
+}
+
+.sparkle:nth-child(1) {
+    left: 8%;
+    top: 15%;
+    animation-delay: 0s;
+}
+
+.sparkle:nth-child(2) {
+    left: 20%;
+    top: 55%;
+    animation-delay: 1.2s;
+}
+
+.sparkle:nth-child(3) {
+    left: 38%;
+    top: 25%;
+    animation-delay: 2s;
+}
+
+.sparkle:nth-child(4) {
+    left: 60%;
+    top: 65%;
+    animation-delay: 0.8s;
+}
+
+.sparkle:nth-child(5) {
+    left: 78%;
+    top: 20%;
+    animation-delay: 2.8s;
+}
+
+.sparkle:nth-child(6) {
+    left: 90%;
+    top: 48%;
+    animation-delay: 1.7s;
+}
+
+@keyframes sparkleFloat {
+
+    0% {
+        transform: translateY(0) scale(0.7);
+        opacity: 0.2;
+    }
+
+    50% {
+        transform: translateY(-25px) scale(1.2);
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: translateY(0) scale(0.7);
+        opacity: 0.2;
+    }
+
+}
+
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+
+.page {
+    position: relative;
+
+    z-index: 1;
+
+    width: 100%;
+    max-width: 1050px;
+
+    margin: 0 auto;
+
+    padding: 70px 25px 100px;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    text-align: center;
+
+    margin-bottom: 75px;
+}
+
+.chapter {
+    font-size: 13px;
+
+    letter-spacing: 4px;
+
+    color: #c7839e;
+
+    margin-bottom: 15px;
+
+    font-weight: bold;
+}
+
+.title {
+    font-size: clamp(32px, 6vw, 58px);
+
+    letter-spacing: 2px;
+
+    color: #7b5263;
+
+    font-weight: 700;
+
+    line-height: 1.15;
+
+    margin-bottom: 20px;
+}
+
+.subtitle {
+    max-width: 650px;
+
+    margin: 0 auto;
+
+    font-size: 16px;
+
+    line-height: 1.9;
+
+    color: #8b727d;
+}
+
+
+/* =========================
+   LOVE SECTION
+========================= */
+
+.love-section {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 55px;
+
+    align-items: center;
+
+    margin-bottom: 90px;
+
+    padding: 30px;
+
+    background: rgba(255, 255, 255, 0.75);
+
+    border: 1px solid rgba(230, 180, 199, 0.45);
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 15px 45px rgba(170, 110, 135, 0.08);
+
+    backdrop-filter: blur(5px);
+}
+
+
+/* Đảo vị trí xen kẽ */
+
+.love-section.reverse .love-media {
+    order: 2;
+}
+
+.love-section.reverse .love-content {
+    order: 1;
+}
+
+
+/* =========================
+   MEDIA FRAME
+   Dùng cho cả ảnh và video
+========================= */
+
+.love-media {
+    width: 100%;
+
+    background: #fff8fa;
+
+    border-radius: 22px;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(220, 170, 190, 0.35);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+
+/* =========================
+   IMAGE
+========================= */
+
+.love-media img {
+    display: block;
+
+    width: 100%;
+
+    height: auto;
+
+    max-height: 600px;
+
+    object-fit: contain;
+}
+
+
+/* =========================
+   VIDEO
+========================= */
+
+.love-media video {
+    display: block;
+
+    width: 100%;
+
+    height: auto;
+
+    max-height: 600px;
+
+    object-fit: contain;
+
+    background: #000;
+}
+
+
+/* =========================
+   CAPTION
+========================= */
+
+.image-caption {
+    text-align: center;
+
+    padding: 12px 10px 14px;
+
+    font-size: 13px;
+
+    color: #a48994;
+
+    font-style: italic;
+
+    background: #fff8fa;
+}
+
+
+/* =========================
+   CONTENT
+========================= */
+
+.love-number {
+    font-size: 13px;
+
+    letter-spacing: 3px;
+
+    color: #d18ba5;
+
+    font-weight: bold;
+
+    margin-bottom: 12px;
+}
+
+.love-title {
+    font-size: 28px;
+
+    color: #74505f;
+
+    line-height: 1.3;
+
+    margin-bottom: 20px;
+}
+
+.love-note {
+    font-size: 16px;
+
+    line-height: 2;
+
+    color: #806b74;
+}
+
+.love-note strong {
+    color: #a96380;
+}
+
+
+/* =========================
+   FINAL SPECIAL MESSAGE
+========================= */
+
+.final-message {
+    margin-top: 30px;
+
+    margin-bottom: 80px;
+
+    padding: 55px 35px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff1f6,
+            #ffffff,
+            #fff3f7
+        );
+
+    border-radius: 30px;
+
+    border: 1px solid #edc4d3;
+
+    box-shadow:
+        0 20px 50px rgba(180, 100, 130, 0.10);
+}
+
+.final-small {
+    font-size: 13px;
+
+    letter-spacing: 3px;
+
+    color: #c47e99;
+
+    margin-bottom: 18px;
+
+    font-weight: bold;
+}
+
+.final-title {
+    font-size: clamp(25px, 5vw, 38px);
+
+    color: #754d5e;
+
+    margin-bottom: 25px;
+
+    line-height: 1.4;
+}
+
+.final-text {
+    max-width: 700px;
+
+    margin: 0 auto;
+
+    font-size: 17px;
+
+    line-height: 2;
+
+    color: #806b74;
+}
+
+.final-heart {
+    margin-top: 25px;
+
+    font-size: 28px;
+
+    animation: heartBeat 2s infinite;
+}
+
+@keyframes heartBeat {
+
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+
+}
+
+
+/* =========================
+   NEXT PAGE
+========================= */
+
+.next-section {
+    text-align: center;
+
+    cursor: pointer;
+
+    padding: 30px 15px;
+
+    transition: transform 0.3s ease;
+}
+
+.next-section:hover {
+    transform: translateY(5px);
+}
+
+.next-text {
+    font-size: 14px;
+
+    letter-spacing: 3px;
+
+    color: #b56f89;
+
+    font-weight: bold;
+
+    margin-bottom: 14px;
+}
+
+.next-arrow {
+    font-size: 28px;
+
+    color: #c47e99;
+
+    animation: arrowMove 1.8s infinite ease-in-out;
+}
+
+@keyframes arrowMove {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(8px);
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+    .page {
+        padding: 45px 16px 70px;
+    }
+
+    .header {
+        margin-bottom: 45px;
+    }
+
+    .chapter {
+        font-size: 11px;
+
+        letter-spacing: 3px;
+    }
+
+    .title {
+        font-size: 34px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+
+        line-height: 1.8;
+    }
+
+
+    /* LOVE CARD */
+
+    .love-section {
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 25px;
+
+        margin-bottom: 55px;
+
+        padding: 18px;
+
+        border-radius: 22px;
+    }
+
+
+    .love-section.reverse .love-media {
+        order: 1;
+    }
+
+    .love-section.reverse .love-content {
+        order: 2;
+    }
+
+
+    /* MEDIA */
+
+    .love-media {
+        width: 100%;
+
+        border-radius: 17px;
+    }
+
+
+    .love-media img {
+        width: 100%;
+
+        height: auto;
+
+        max-height: none;
+
+        object-fit: contain;
+    }
+
+
+    .love-media video {
+        width: 100%;
+
+        height: auto;
+
+        max-height: none;
+
+        object-fit: contain;
+    }
+
+
+    .image-caption {
+        font-size: 12px;
+
+        padding: 10px 8px 12px;
+    }
+
+
+    /* CONTENT */
+
+    .love-content {
+        padding: 3px 5px 5px;
+    }
+
+    .love-number {
+        font-size: 11px;
+
+        letter-spacing: 2px;
+
+        margin-bottom: 8px;
+    }
+
+    .love-title {
+        font-size: 24px;
+
+        margin-bottom: 15px;
+    }
+
+    .love-note {
+        font-size: 15px;
+
+        line-height: 1.9;
+    }
+
+
+    /* FINAL */
+
+    .final-message {
+        padding: 40px 22px;
+
+        border-radius: 23px;
+
+        margin-bottom: 55px;
+    }
+
+    .final-small {
+        font-size: 11px;
+
+        letter-spacing: 2px;
+    }
+
+    .final-title {
+        font-size: 26px;
+    }
+
+    .final-text {
+        font-size: 15px;
+
+        line-height: 1.9;
+    }
+
+    .next-text {
+        font-size: 12px;
+
+        letter-spacing: 2px;
+    }
+
+}
+
+
+/* =========================
+   SMALL PHONE
+========================= */
+
+@media (max-width: 380px) {
+
+    .page {
+        padding-left: 12px;
+
+        padding-right: 12px;
+    }
+
+    .title {
+        font-size: 30px;
+    }
+
+    .love-section {
+        padding: 14px;
+    }
+
+    .love-title {
+        font-size: 22px;
+    }
+
+    .love-note {
+        font-size: 14px;
+    }
+
+}
+/* ================================
+   PAGE TRANSITION
+   ================================ */
+
+html {
+    background: #fff;
+}
+
+body {
+    opacity: 0;
+    animation: pageEnter 0.7s ease forwards;
+}
+
+body.page-leaving {
+    animation: pageLeave 0.5s ease forwards;
+}
+
+@keyframes pageEnter {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pageLeave {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+html,
+body {
+    overflow-x: hidden;
+}
+/* ================================
+   CHAPTER TRANSITION
+   ================================ */
+
+.chapter-transition {
+    text-align: center;
+    margin: 80px auto 25px;
+    padding: 30px 20px 10px;
+    max-width: 650px;
+}
+
+.chapter-transition-line {
+    width: 45px;
+    height: 1px;
+    background: rgba(190, 130, 155, 0.4);
+    margin: 0 auto 28px;
+}
+
+.chapter-transition-small {
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #b993a4;
+    margin-bottom: 20px;
+}
+
+.chapter-transition-main {
+    max-width: 550px;
+    margin: 0 auto;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 25px;
+    line-height: 1.65;
+    color: #704b5c;
+}
+
+.chapter-transition-note {
+    margin-top: 16px;
+    font-size: 14px;
+    line-height: 1.9;
+    color: #9b7b88;
+}
+
+.chapter-transition .next-section {
+    margin-top: 40px;
+}
+
+@media (max-width: 768px) {
+
+    .chapter-transition {
+        margin-top: 60px;
+        padding: 25px 15px 5px;
+    }
+
+    .chapter-transition-main {
+        font-size: 21px;
+        line-height: 1.6;
+    }
+
+    .chapter-transition-note {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 380px) {
+
+    .chapter-transition-main {
+        font-size: 19px;
+    }
+
+    .chapter-transition-small {
+        font-size: 9px;
+        letter-spacing: 3px;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     FAIRY DUST
+========================= -->
+
+<div class="sparkle"></div>
+<div class="sparkle"></div>
+<div class="sparkle"></div>
+<div class="sparkle"></div>
+<div class="sparkle"></div>
+<div class="sparkle"></div>
+
+
+
+<main class="page">
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<section class="header">
+
+    <div class="chapter">
+        CHAPTER OF MY HEART
+    </div>
+
+    <h1 class="title">
+        THINGS I LOVE<br>
+        ABOUT YOU
+    </h1>
+
+    <p class="subtitle">
+        Có những điều rất nhỏ ở anh thôi,<br>
+        nhưng chẳng hiểu sao lại khiến em thương anh nhiều hơn một chút.
+    </p>
+
+</section>
+
+
+
+<!-- =========================
+     LOVE 01 — ẢNH
+========================= -->
+
+<section class="love-section">
+
+    <div class="love-media">
+
+        <div>
+
+            <img
+                src="images/love01.jpg"
+                alt="Sự mạnh mẽ của anh"
+            >
+
+            <div class="image-caption">
+                Người luôn khiến em cảm thấy được bảo vệ.
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="love-content">
+
+        <div class="love-number">
+            01 — THE WAY YOU MAKE ME FEEL SAFE
+        </div>
+
+        <h2 class="love-title">
+            Sự mạnh mẽ của anh
+        </h2>
+
+        <p class="love-note">
+
+            Em thích cái cách anh luôn có một sự mạnh mẽ rất riêng.
+            Không cần phải lúc nào cũng nói ra,
+            nhưng ở bên anh em luôn có cảm giác
+            <strong>“ừ, có anh ở đây rồi.”</strong>
+
+            <br><br>
+
+            Có lẽ đó là một trong những điều khiến em
+            cảm thấy yên tâm khi ở cạnh anh nhất.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     LOVE 02 — ẢNH
+========================= -->
+
+<section class="love-section reverse">
+
+    <div class="love-media">
+
+        <div>
+
+            <img
+                src="images/love02.jpg"
+                alt="Sự trách nhiệm của anh"
+            >
+
+            <div class="image-caption">
+                Anh lúc nào cũng cố gắng làm tốt phần của mình.
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="love-content">
+
+        <div class="love-number">
+            02 — THE WAY YOU CARE
+        </div>
+
+        <h2 class="love-title">
+            Sự trách nhiệm của anh
+        </h2>
+
+        <p class="love-note">
+
+            Em yêu sự trách nhiệm của anh.
+            Với công việc, với gia đình,
+            với những người anh thương
+            và cả với những chuyện rất nhỏ.
+
+            <br><br>
+
+            Có những lúc em biết anh cũng mệt,
+            nhưng anh vẫn cố gắng hoàn thành những điều
+            mà anh cảm thấy mình nên làm.
+
+            <br><br>
+
+            <strong>
+                Em thật sự rất trân trọng điều đó ở anh.
+            </strong>
+
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     LOVE 03 — ẢNH
+========================= -->
+
+<section class="love-section">
+
+    <div class="love-media">
+
+        <div>
+
+            <img
+                src="images/love03.jpg"
+                alt="Cách anh lắng nghe em"
+            >
+
+            <div class="image-caption">
+                Cảm ơn vì luôn nghe em nói.
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="love-content">
+
+        <div class="love-number">
+            03 — YOU LISTEN
+        </div>
+
+        <h2 class="love-title">
+            Cách anh lắng nghe em
+        </h2>
+
+        <p class="love-note">
+
+            Em là đứa nói nhiều.
+            Mà anh cũng nói nhiều không kém. 😂
+
+            <br><br>
+
+            Vậy mà những lúc em thật sự cần nói,
+            anh vẫn chịu ngồi nghe em,
+            nghe cả những chuyện linh tinh,
+            những điều em buồn,
+            những điều em suy nghĩ mãi không thôi.
+
+            <br><br>
+
+            <strong>
+                Được một người thật sự lắng nghe mình
+                là một cảm giác rất ấm áp.
+            </strong>
+
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     LOVE 04 — VIDEO
+========================= -->
+
+<section class="love-section reverse">
+
+    <div class="love-media">
+
+        <div>
+
+            <video
+                src="videos/love04.mp4"
+                controls
+                playsinline
+                preload="metadata"
+            ></video>
+
+            <div class="image-caption">
+                Chọc em là nghề tay trái của anh. 😂
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="love-content">
+
+        <div class="love-number">
+            04 — YOUR SILLY SIDE
+        </div>
+
+        <h2 class="love-title">
+            Cái tính hay chọc em
+        </h2>
+
+        <p class="love-note">
+
+            Một trong những điều rất “anh” là
+            <strong>anh rất thích chọc em.</strong>
+
+            <br><br>
+
+            Có những lúc em tức thật,
+            nhưng nhiều lúc nhìn lại cũng thấy buồn cười.
+            😂
+
+            <br><br>
+
+            Chắc vì ở cạnh nhau đủ lâu,
+            nên anh biết chính xác phải chọc chỗ nào
+            để em vừa tức vừa không nhịn cười được.
+
+            <br><br>
+
+            Và ừ...
+
+            <strong>
+                em vẫn thương anh dù anh rất đáng ghét. 🤏🏻
+            </strong>
+
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     LOVE 05 — ẢNH
+========================= -->
+
+<section class="love-section">
+
+    <div class="love-media">
+
+        <div>
+
+            <img
+                src="images/love05.jpg"
+                alt="Những thói quen rất anh"
+            >
+
+            <div class="image-caption">
+                Ăn cay, ăn cơm, không chịu mặc áo khoác... rất anh.
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="love-content">
+
+        <div class="love-number">
+            05 — LITTLE THINGS THAT ARE SO YOU
+        </div>
+
+        <h2 class="love-title">
+            Những thói quen rất “anh”
+        </h2>
+
+        <p class="love-note">
+
+            Anh ăn cay như thể không cay mới là chuyện lạ.
+            🌶️
+
+            <br>
+
+            Ăn một đống cơm nhưng đồ ăn thì chẳng bao nhiêu.
+            🍚
+
+            <br>
+
+            Ra đường thì nhất quyết không chịu mặc áo khoác,
+            cũng chẳng thích đeo khẩu trang.
+
+            <br><br>
+
+            Rồi còn cái trò
+            <strong>
+                “kiểm tra bản đồ xem người yêu đang ở quê nào”
+            </strong>
+            nữa. 😂
+
+            <br><br>
+
+            Toàn những chuyện nhỏ xíu thôi,
+            nhưng gom lại...
+
+            lại thành một phiên bản rất riêng của anh
+            mà em thương.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     LOVE 06 — VIDEO
+========================= -->
+
+<section class="love-section reverse">
+
+    <div class="love-media">
+
+        <div>
+
+            <video
+                src="videos/love06.mp4"
+                controls
+                playsinline
+                preload="metadata"
+            ></video>
+
+            <div class="image-caption">
+                Một chiếc anh rất mềm lòng với những bé cún. 🐶
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="love-content">
+
+        <div class="love-number">
+            06 — YOUR SOFT HEART
+        </div>
+
+        <h2 class="love-title">
+            Sự mềm lòng của anh
+        </h2>
+
+        <p class="love-note">
+
+            Em thích những lúc nhìn thấy một mặt rất mềm của anh.
+
+            <br><br>
+
+            Đặc biệt là với những bé cún.
+            🐶🤍
+
+            <br><br>
+
+            Có lẽ một người có thể mạnh mẽ,
+            trách nhiệm và luôn cố gắng như anh,
+            nhưng vẫn giữ được một phần dịu dàng như vậy
+            là điều rất đáng yêu.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     LOVE 07 — ẢNH
+========================= -->
+
+<section class="love-section">
+
+    <div class="love-media">
+
+        <div>
+
+            <img
+                src="images/love07.jpg"
+                alt="Anh luôn cố gắng"
+            >
+
+            <div class="image-caption">
+                Em nhìn thấy những cố gắng của anh.
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="love-content">
+
+        <div class="love-number">
+            07 — I SEE YOUR EFFORT
+        </div>
+
+        <h2 class="love-title">
+            Anh luôn cố gắng
+        </h2>
+
+        <p class="love-note">
+
+            Có thể đôi khi anh không nhận ra,
+            nhưng em nhìn thấy những lần anh cố gắng.
+
+            <br><br>
+
+            Anh luôn muốn mình làm tốt hơn,
+            muốn mình trở nên tốt hơn,
+            muốn những người anh thương được vui.
+
+            <br><br>
+
+            Và em biết đôi khi chính vì muốn tốt hơn
+            nên anh lại
+            <strong>
+                khắt khe với bản thân quá nhiều.
+            </strong>
+
+            <br><br>
+
+            Nhưng với em,
+            những cố gắng đó đã rất đáng quý rồi.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     FINAL MESSAGE
+========================= -->
+
+<section class="final-message">
+
+    <div class="final-small">
+        ONE LITTLE WISH FOR YOU
+    </div>
+
+    <h2 class="final-title">
+        Anh thương bản thân mình<br>
+        nhiều hơn một chút nhé. 🤍
+    </h2>
+
+    <p class="final-text">
+
+        Em biết anh thường hay tự chê mình,
+        hay thất vọng vì những điều mình chưa làm tốt.
+
+        <br><br>
+
+        Nhưng anh không cần lúc nào cũng phải hoàn hảo
+        mới xứng đáng được yêu thương.
+
+        <br><br>
+
+        Em chỉ mong sau này,
+        mỗi khi anh nhìn lại bản thân,
+        anh có thể dịu dàng với chính mình hơn một chút.
+
+        <br><br>
+
+        Giống như cách em nhìn anh vậy.
+
+        <br><br>
+
+        <strong>
+            Vì trong mắt em,
+            anh đã là một người rất đáng yêu rồi.
+        </strong>
+
+    </p>
+
+    <div class="final-heart">
+        ♡
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     NEXT PAGE
+========================= -->
+
+<div class="chapter-transition">
+
+    <div class="chapter-transition-line"></div>
+
+    <div class="chapter-transition-small">
+        AND ONE LAST THING...
+    </div>
+
+    <div class="chapter-transition-main">
+        Có những điều em không muốn
+        chỉ nói trong một ngày sinh nhật.
+    </div>
+
+    <div class="chapter-transition-note">
+        Nên em để dành một chút dịu dàng<br>
+        cho phần cuối cùng này. 🤍
+    </div>
+
+    <div class="next-section" onclick="goToPage6()">
+        <div class="next-text">
+            💌 A LITTLE MESSAGE FOR YOU
+        </div>
+
+        <div class="next-arrow">
+            ↓
+        </div>
+    </div>
+
+</div>
+
+</main>
+
+
+
+<script>
+
+function goToPage6() {
+    document.body.classList.add("page-leaving");
+
+    setTimeout(function () {
+        window.location.href = "page6.html";
+    }, 450);
+}
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    document.querySelectorAll("a").forEach(function (link) {
+
+        link.addEventListener("click", function (event) {
+
+            const destination = link.getAttribute("href");
+
+            if (
+                !destination ||
+                destination.startsWith("#") ||
+                destination.startsWith("http") ||
+                link.target === "_blank"
+            ) {
+                return;
+            }
+
+            event.preventDefault();
+
+            document.body.classList.add("page-leaving");
+
+            setTimeout(function () {
+                window.location.href = destination;
+            }, 450);
+
+        });
+
+    });
+
+});
+</script>
+</body>
+</html>
