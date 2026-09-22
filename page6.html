@@ -1,1434 +1,690 @@
-<!-- =========================================================
+<!-- =========================
      PAGE 6 — THE FINAL CHAPTER
-     MOBILE FIRST
-     ========================================================= -->
-
+========================= -->
 <section class="page6" id="page6">
 
 <style>
-/* =========================================================
-   PAGE 6 — RESET RIÊNG
-   ========================================================= */
+/* =========================
+   PAGE 6 — MOBILE FIRST
+========================= */
 
-#page6.page6,
-#page6.page6 * {
-  box-sizing: border-box;
+.page6 {
+    min-height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 42px 18px 70px;
+    text-align: center;
+    background: #fff;
+    overflow: hidden;
+    position: relative;
 }
 
-#page6.page6 {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  min-height: 100dvh;
+/* ---------- HEADER ---------- */
 
-  padding: 42px 14px 70px;
+.p6-header {
+    margin-bottom: 34px;
+}
 
-  background:
-    linear-gradient(
-      180deg,
-      #fffafb 0%,
-      #fff 48%,
-      #fff7fa 100%
+.p6-chapter {
+    font-size: 13px;
+    letter-spacing: 4px;
+    font-weight: 700;
+    color: #b58c96;
+    margin-bottom: 10px;
+}
+
+.p6-title {
+    margin: 0;
+    font-size: clamp(28px, 8vw, 42px);
+    line-height: 1.15;
+    letter-spacing: 1px;
+    color: #292329;
+    font-weight: 800;
+}
+
+.p6-subtitle {
+    margin: 13px 0 0;
+    font-size: 16px;
+    color: #9b7b83;
+    letter-spacing: .5px;
+}
+
+/* ---------- ENVELOPE AREA ---------- */
+
+.p6-envelope-area {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 28px;
+}
+
+.p6-envelope {
+    width: min(88vw, 390px);
+    aspect-ratio: 1.38 / 1;
+    position: relative;
+    cursor: pointer;
+    filter: drop-shadow(0 16px 22px rgba(70, 45, 50, .13));
+}
+
+/* thân bìa */
+
+.p6-envelope-body {
+    position: absolute;
+    inset: 0;
+    background: #fffdfc;
+    border: 1.5px solid #222;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+/* hai đường chéo tạo cảm giác phong bì */
+
+.p6-envelope-body::before,
+.p6-envelope-body::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 71%;
+    height: 1.5px;
+    background: #222;
+}
+
+.p6-envelope-body::before {
+    left: -9%;
+    transform: rotate(32deg);
+    transform-origin: left center;
+}
+
+.p6-envelope-body::after {
+    right: -9%;
+    transform: rotate(-32deg);
+    transform-origin: right center;
+}
+
+/* tam giác ngược */
+
+.p6-flap {
+    position: absolute;
+    z-index: 4;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 68%;
+    background: #fffdfc;
+
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        50% 100%
     );
 
-  color: #4b3b40;
-
-  overflow-x: hidden;
+    border: none;
 }
 
+/* viền tam giác */
 
-/* =========================================================
-   OPENING
-   ========================================================= */
-
-#page6 .page6-opening {
-  position: relative;
-  z-index: 2;
-
-  text-align: center;
-
-  width: 100%;
-  max-width: 600px;
-
-  margin: 0 auto;
+.p6-flap-line {
+    position: absolute;
+    z-index: 5;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 68%;
+    pointer-events: none;
 }
 
-#page6 .page6-chapter {
-  margin: 0 0 8px;
-
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
-  font-size: 12px !important;
-  font-weight: 700;
-
-  letter-spacing: 4px;
-
-  color: #d58da3;
+.p6-flap-line::before,
+.p6-flap-line::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    border-top: 1.5px solid #222;
 }
 
-#page6 .page6-title {
-  margin: 0;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size: clamp(30px, 9vw, 48px) !important;
-
-  line-height: 1.15;
-
-  font-weight: 600;
-
-  color: #403337;
+.p6-flap-line::before {
+    left: 0;
+    border-left: 1.5px solid #222;
+    clip-path: polygon(0 0, 100% 0, 100% 100%);
 }
 
-#page6 .page6-for {
-  margin: 12px 0 0;
-
-  font-family:
-    "Segoe Print",
-    "Comic Sans MS",
-    cursive;
-
-  font-size: 18px !important;
-
-  color: #a76c7f;
+.p6-flap-line::after {
+    right: 0;
+    border-right: 1.5px solid #222;
+    clip-path: polygon(0 100%, 0 0, 100% 0);
 }
 
-#page6 .page6-opening-heart {
-  margin-top: 12px;
+/* tim con dấu */
 
-  font-size: 23px !important;
-
-  color: #e99ab2;
+.p6-seal {
+    position: absolute;
+    z-index: 10;
+    left: 50%;
+    top: 46%;
+    transform: translate(-50%, -50%);
+    width: 66px;
+    height: 66px;
+    border-radius: 50%;
+    border: 1.5px solid #222;
+    background: #ff8fa8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    color: #fff;
+    box-shadow: 0 5px 12px rgba(255, 105, 135, .28);
+    transition: transform .25s ease;
 }
 
-#page6 .page6-intro {
-  margin: 15px auto 0;
-
-  max-width: 330px;
-
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
-  font-size: 15px !important;
-
-  line-height: 1.75;
-
-  color: #806e74;
+.p6-envelope:active .p6-seal {
+    transform: translate(-50%, -50%) scale(.94);
 }
 
-
-/* =========================================================
-   ENVELOPE AREA
-   ========================================================= */
-
-#page6 .page6-envelope-scene {
-  position: relative;
-
-  width: 100%;
-
-  height: 300px;
-
-  margin: 25px auto 0;
-
-  display: flex;
-
-  justify-content: center;
-  align-items: center;
+.p6-open-text {
+    position: absolute;
+    z-index: 11;
+    bottom: 13px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: #8e7078;
 }
 
+/* ---------- POPUP LÁ THƯ ---------- */
+
+.p6-letter-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(38, 27, 31, .42);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    box-sizing: border-box;
 
-/* =========================================================
-   ENVELOPE WRAPPER
-   ========================================================= */
-
-#page6 .page6-envelope-wrap {
-  position: relative;
-
-  width: min(88vw, 390px);
-
-  height: 205px;
-
-  margin: 0 auto;
-}
-
-
-/* =========================================================
-   ENVELOPE BASE
-   ========================================================= */
-
-#page6 .page6-envelope {
-  position: absolute;
-
-  left: 50%;
-  top: 50%;
-
-  width: 100%;
-  height: 185px;
-
-  transform: translate(-50%, -50%);
-
-  background: #fffdfd;
-
-  border: 1px solid #e4d8dc;
-
-  border-radius: 11px;
-
-  box-shadow:
-    0 15px 35px rgba(76, 53, 61, .14);
-
-  overflow: hidden;
-
-  transition:
-    transform .55s ease,
-    opacity .4s ease;
-}
-
-
-/* =========================================================
-   NẮP TRÊN
-   TAM GIÁC CHỈA XUỐNG
-   ========================================================= */
-
-#page6 .page6-envelope::before {
-  content: "";
-
-  position: absolute;
-
-  z-index: 4;
-
-  left: 0;
-  top: 0;
-
-  width: 100%;
-  height: 112px;
-
-  background: #fff6f8;
-
-  clip-path: polygon(
-    0 0,
-    100% 0,
-    50% 100%
-  );
-
-  border-bottom: 1px solid #eadde1;
-}
-
-
-/* =========================================================
-   PHẦN GẤP PHÍA DƯỚI
-   ========================================================= */
-
-#page6 .page6-envelope::after {
-  content: "";
-
-  position: absolute;
-
-  z-index: 2;
-
-  left: 0;
-  bottom: 0;
-
-  width: 100%;
-  height: 105px;
-
-  background: #fffafb;
-
-  clip-path: polygon(
-    0 100%,
-    50% 0,
-    100% 100%
-  );
-}
-
-
-/* =========================================================
-   TIM NIÊM PHONG
-   ========================================================= */
-
-#page6 .page6-heart-seal {
-  position: absolute;
-
-  z-index: 20;
-
-  left: 50%;
-  top: 59%;
-
-  width: 60px;
-  height: 60px;
-
-  transform: translate(-50%, -50%);
-
-  padding: 0;
-
-  border: none;
-  border-radius: 50%;
-
-  background: #ef9bb5;
-
-  color: #fff;
-
-  font-size: 26px !important;
-
-  line-height: 60px !important;
-
-  text-align: center;
-
-  cursor: pointer;
-
-  box-shadow:
-    0 7px 20px rgba(226, 133, 158, .30);
-
-  transition:
-    transform .2s ease,
-    opacity .3s ease;
-}
-
-#page6 .page6-heart-seal:active {
-  transform:
-    translate(-50%, -50%)
-    scale(.92);
-}
-
-
-/* =========================================================
-   CHỈ DẪN
-   ========================================================= */
-
-#page6 .page6-envelope-hint {
-  position: absolute;
-
-  left: 50%;
-  bottom: -5px;
-
-  transform: translateX(-50%);
-
-  width: 100%;
-
-  text-align: center;
-
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
-  font-size: 13px !important;
-
-  color: #a88e96;
-
-  transition: opacity .3s ease;
-}
-
-
-/* =========================================================
-   KHI MỞ PHONG BÌ
-   ========================================================= */
-
-#page6 .page6-envelope-wrap.is-open .page6-envelope {
-  transform:
-    translate(-50%, -50%)
-    scale(.72)
-    translateY(30px);
-
-  opacity: 0;
-}
-
-#page6 .page6-envelope-wrap.is-open .page6-heart-seal {
-  opacity: 0;
-
-  pointer-events: none;
-}
-
-#page6 .page6-envelope-wrap.is-open .page6-envelope-hint {
-  opacity: 0;
-}
-
-
-/* =========================================================
-   LÁ THƯ
-   ========================================================= */
-
-#page6 .page6-inside-letter {
-  position: absolute;
-
-  z-index: 100;
-
-  left: 50%;
-  top: 50%;
-
-  width: calc(100vw - 28px);
-
-  height: min(78dvh, 720px);
-
-  min-height: 500px;
-
-  transform:
-    translate(-50%, 55%)
-    scale(.72);
-
-  opacity: 0;
-
-  visibility: hidden;
-
-  pointer-events: none;
-
-  background:
-    linear-gradient(
-      135deg,
-      #fffefe 0%,
-      #fffafa 100%
-    );
-
-  border: 1px solid #eadfe2;
-
-  border-radius: 15px;
-
-  box-shadow:
-    0 22px 60px rgba(65, 45, 53, .20);
-
-  overflow: hidden;
-
-  transition:
-    transform .65s cubic-bezier(.22,.8,.25,1),
-    opacity .45s ease,
-    visibility 0s linear .65s;
-}
-
-
-/* =========================================================
-   HIỆN LÁ THƯ
-   ========================================================= */
-
-#page6 .page6-envelope-wrap.is-open .page6-inside-letter {
-  transform:
-    translate(-50%, -50%)
-    scale(1);
-
-  opacity: 1;
-
-  visibility: visible;
-
-  pointer-events: auto;
-
-  transition:
-    transform .65s cubic-bezier(.22,.8,.25,1),
-    opacity .45s ease,
-    visibility 0s;
-}
-
-
-/* =========================================================
-   GIẤY BÊN TRONG
-   ========================================================= */
-
-#page6 .page6-paper {
-  position: relative;
-
-  width: 100%;
-  height: 100%;
-
-  padding:
-    34px
-    23px
-    30px;
-
-  overflow-y: auto;
-
-  -webkit-overflow-scrolling: touch;
-
-  scrollbar-width: thin;
-}
-
-
-/* =========================================================
-   TRANG TRÍ
-   ========================================================= */
-
-#page6 .page6-paper::before {
-  content: "♡";
-
-  position: absolute;
-
-  top: 13px;
-  left: 18px;
-
-  font-size: 19px;
-
-  color: #efb2c3;
-
-  opacity: .8;
-}
-
-#page6 .page6-paper::after {
-  content: "♡";
-
-  position: absolute;
-
-  right: 18px;
-  bottom: 13px;
-
-  font-size: 19px;
-
-  color: #efb2c3;
-
-  opacity: .8;
-}
-
-
-/* =========================================================
-   TIÊU ĐỀ THƯ
-   ========================================================= */
-
-#page6 .page6-letter-title {
-  margin: 5px 0 22px;
-
-  text-align: center;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size: 25px !important;
-
-  line-height: 1.35;
-
-  font-weight: 600;
-
-  color: #513d44;
-}
-
-
-/* =========================================================
-   NỘI DUNG THƯ
-   ========================================================= */
-
-#page6 .page6-letter-body {
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
-  font-size: 18px !important;
-
-  line-height: 2 !important;
-
-  color: #55474c;
-
-  text-align: left;
-}
-
-#page6 .page6-letter-body p {
-  margin: 0 0 17px;
-
-  font-size: 18px !important;
-
-  line-height: 2 !important;
-
-  color: #55474c !important;
-}
-
-#page6 .page6-letter-body strong {
-  font-size: 18px !important;
-
-  font-weight: 700;
-
-  color: #b76f86;
-}
-
-
-/* =========================================================
-   DÒNG NHẤN MẠNH
-   ========================================================= */
-
-#page6 .page6-love-line {
-  margin: 25px 0;
-
-  padding: 17px 15px;
-
-  text-align: center;
-
-  background: #fff2f6;
-
-  border-radius: 12px;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size: 18px !important;
-
-  line-height: 1.7 !important;
-
-  color: #a65f77;
-}
-
-
-/* =========================================================
-   CHỮ KÝ
-   ========================================================= */
-
-#page6 .page6-signature {
-  margin-top: 25px;
-
-  text-align: right;
-
-  font-family:
-    "Segoe Print",
-    "Comic Sans MS",
-    cursive;
-
-  font-size: 17px !important;
-
-  line-height: 1.8;
-
-  color: #80606b;
-}
-
-
-/* =========================================================
-   NÚT ĐÓNG THƯ
-   ========================================================= */
-
-#page6 .page6-close-letter {
-  display: block;
-
-  width: max-content;
-
-  margin: 26px auto 0;
-
-  padding: 11px 22px;
-
-  border: 1px solid #edc4d0;
-
-  border-radius: 30px;
-
-  background: #fff7f9;
-
-  color: #ad7084;
-
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
-  font-size: 14px !important;
-
-  cursor: pointer;
-}
-
-
-/* =========================================================
-   SECRET AREA
-   ========================================================= */
-
-#page6 .page6-secret {
-  display: none;
-
-  width: 100%;
-  max-width: 520px;
-
-  margin: 45px auto 0;
-
-  text-align: center;
-}
-
-#page6 .page6-secret.show {
-  display: block;
-
-  animation:
-    page6FadeUp .7s ease both;
-}
-
-
-@keyframes page6FadeUp {
-  from {
     opacity: 0;
-    transform: translateY(25px);
-  }
+    visibility: hidden;
+    pointer-events: none;
 
-  to {
+    transition: opacity .35s ease, visibility .35s ease;
+}
+
+.p6-letter-overlay.show {
     opacity: 1;
-    transform: translateY(0);
-  }
+    visibility: visible;
+    pointer-events: auto;
 }
 
+/* lá thư */
 
-/* =========================================================
-   SECRET TEXT
-   ========================================================= */
+.p6-letter {
+    width: min(94vw, 420px);
+    max-height: 88vh;
+    background: #fffdf7;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
 
-#page6 .page6-secret-title {
-  margin: 0 0 15px;
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.24);
 
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
+    transform: translateY(80px) scale(.92);
+    opacity: 0;
 
-  font-size: 25px !important;
-
-  line-height: 1.45;
-
-  color: #514047;
+    transition:
+        transform .65s cubic-bezier(.22,.9,.3,1),
+        opacity .45s ease;
 }
 
-#page6 .page6-secret-text {
-  margin: 0 0 10px;
-
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
-  font-size: 16px !important;
-
-  line-height: 1.8;
-
-  color: #806e74;
+.p6-letter-overlay.show .p6-letter {
+    transform: translateY(0) scale(1);
+    opacity: 1;
 }
 
+/* phần giấy cuộn */
 
-/* =========================================================
-   CÀ RỐT
-   ========================================================= */
+.p6-paper {
+    max-height: 88vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 35px 23px 30px;
 
-#page6 .page6-carrot {
-  display: inline-block;
-
-  margin: 5px 0 18px;
-
-  padding: 0;
-
-  border: none;
-
-  background: transparent;
-
-  font-size: 52px !important;
-
-  cursor: pointer;
-
-  transition: transform .25s ease;
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            #fffdf7 0px,
+            #fffdf7 31px,
+            #eadde0 32px,
+            #fffdf7 33px
+        );
 }
 
-#page6 .page6-carrot:active {
-  transform: scale(.85);
+/* lề trái */
+
+.p6-paper::before {
+    content: "";
+    position: absolute;
+    left: 18px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: rgba(238, 150, 170, .42);
 }
 
-#page6 .page6-carrot.reveal {
-  animation:
-    page6Carrot .6s ease;
+/* nội dung */
+
+.p6-letter-small {
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: #ad8790;
+    margin-bottom: 12px;
 }
 
-
-@keyframes page6Carrot {
-  0% {
-    transform: scale(1) rotate(0);
-  }
-
-  35% {
-    transform: scale(1.25) rotate(-10deg);
-  }
-
-  70% {
-    transform: scale(.9) rotate(8deg);
-  }
-
-  100% {
-    transform: scale(1) rotate(0);
-  }
+.p6-letter-title {
+    margin: 0 0 24px;
+    font-size: clamp(24px, 7vw, 31px);
+    line-height: 1.3;
+    color: #30262b;
 }
 
-
-/* =========================================================
-   HINT
-   ========================================================= */
-
-#page6 .page6-carrot-hint {
-  display: none;
-
-  margin: 0 auto 20px;
-
-  max-width: 300px;
-
-  padding: 12px 16px;
-
-  border-radius: 12px;
-
-  background: #fff0f5;
-
-  color: #a96b80;
-
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
-  font-size: 14px !important;
-
-  line-height: 1.6;
+.p6-letter-content {
+    text-align: left;
+    padding-left: 8px;
 }
 
-#page6 .page6-carrot-hint.show {
-  display: block;
-
-  animation:
-    page6FadeUp .4s ease both;
+.p6-letter-content p {
+    margin: 0 0 24px;
+    font-size: 17px;
+    line-height: 2;
+    color: #41383c;
 }
 
-
-/* =========================================================
-   GIFT BUTTON
-   ========================================================= */
-
-#page6 .page6-gift {
-  display: none;
-
-  margin: 15px auto 0;
-
-  padding: 13px 23px;
-
-  border: none;
-
-  border-radius: 30px;
-
-  background: #ef9bb5;
-
-  color: white;
-
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
-  font-size: 15px !important;
-
-  box-shadow:
-    0 8px 20px rgba(224, 135, 158, .25);
-
-  cursor: pointer;
+.p6-letter-content .pink {
+    color: #e56f8a;
+    font-weight: 700;
 }
 
-#page6 .page6-gift.show {
-  display: block;
-
-  animation:
-    page6FadeUp .5s ease both;
+.p6-letter-content .center {
+    text-align: center;
 }
 
-
-/* =========================================================
-   VIDEO
-   ========================================================= */
-
-#page6 .page6-video-wrap {
-  display: none;
-
-  width: 100%;
-
-  margin: 30px auto 0;
+.p6-heart-line {
+    text-align: center;
+    font-size: 23px;
+    margin: 7px 0 24px;
 }
 
-#page6 .page6-video-wrap.show {
-  display: block;
-
-  animation:
-    page6FadeUp .7s ease both;
+.p6-sign {
+    text-align: right;
+    margin-top: 32px;
+    padding-right: 5px;
+    font-size: 16px;
+    line-height: 1.9;
+    color: #54474b;
 }
 
-#page6 .page6-video-message {
-  margin: 0 0 16px;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size: 19px !important;
-
-  line-height: 1.8;
-
-  color: #80606b;
+.p6-close {
+    width: 100%;
+    margin-top: 28px;
+    padding: 14px 18px;
+    border: 1px solid #d8a5b0;
+    border-radius: 30px;
+    background: #fff;
+    color: #9e6472;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
 }
 
-#page6 .page6-video {
-  display: block;
+/* ---------- SECRET ---------- */
 
-  width: 100%;
-  max-width: 420px;
-
-  margin: 0 auto;
-
-  border-radius: 14px;
-
-  box-shadow:
-    0 12px 35px rgba(60, 40, 48, .15);
+.p6-secret {
+    display: none;
+    margin-top: 45px;
+    animation: p6FadeUp .8s ease both;
 }
 
-
-/* =========================================================
-   FINAL ENDING
-   ========================================================= */
-
-#page6 .page6-ending {
-  display: none;
-
-  width: 100%;
-  max-width: 560px;
-
-  margin: 60px auto 0;
-
-  padding: 0 8px;
-
-  text-align: center;
+.p6-secret.show {
+    display: block;
 }
 
-#page6 .page6-ending.show {
-  display: block;
-
-  animation:
-    page6FadeUp .8s ease both;
+.p6-secret-title {
+    margin: 0 0 16px;
+    font-size: clamp(25px, 7vw, 34px);
+    line-height: 1.3;
+    color: #30262b;
 }
 
-#page6 .page6-ending-title {
-  margin: 0 0 22px;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size: 31px !important;
-
-  line-height: 1.3;
-
-  color: #4c3a41;
+.p6-secret-text {
+    margin: 0 auto 20px;
+    max-width: 330px;
+    font-size: 16px;
+    line-height: 1.8;
+    color: #76636a;
 }
 
-#page6 .page6-ending p {
-  margin: 0 0 14px;
-
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
-  font-size: 17px !important;
-
-  line-height: 1.9;
-
-  color: #66555b;
+.p6-carrot {
+    display: inline-flex;
+    width: 82px;
+    height: 82px;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: #fff3f5;
+    border-radius: 50%;
+    font-size: 46px;
+    cursor: pointer;
+    animation: p6Carrot 1.8s ease-in-out infinite;
 }
 
-#page6 .page6-ending .page6-important {
-  margin: 24px auto;
-
-  padding: 17px 15px;
-
-  max-width: 390px;
-
-  border-radius: 13px;
-
-  background: #fff0f5;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size: 19px !important;
-
-  line-height: 1.7;
-
-  color: #a65f77;
+.p6-hint {
+    display: none;
+    margin: 15px auto 18px;
+    font-size: 15px;
+    color: #a66e79;
 }
 
-#page6 .page6-date {
-  margin-top: 25px !important;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif !important;
-
-  font-size: 18px !important;
-
-  letter-spacing: 2px;
-
-  color: #b8798c !important;
+.p6-hint.show {
+    display: block;
 }
 
-#page6 .page6-ps {
-  margin-top: 18px !important;
-
-  font-size: 14px !important;
-
-  color: #9a858c !important;
+.p6-gift {
+    display: none;
+    margin: 15px auto 0;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 30px;
+    background: #ff8fa8;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    box-shadow: 0 9px 20px rgba(255, 143, 168, .28);
+    cursor: pointer;
 }
 
-
-/* =========================================================
-   BODY LOCK KHI ĐANG MỞ THƯ
-   ========================================================= */
-
-body.page6-letter-open {
-  overflow: hidden;
+.p6-gift.show {
+    display: inline-block;
+    animation: p6FadeUp .5s ease both;
 }
 
+/* ---------- ANIMATION ---------- */
 
-/* =========================================================
-   MOBILE NHỎ
-   ========================================================= */
-
-@media (max-width: 380px) {
-
-  #page6.page6 {
-    padding-top: 34px;
-  }
-
-  #page6 .page6-title {
-    font-size: 29px !important;
-  }
-
-  #page6 .page6-intro {
-    font-size: 14px !important;
-  }
-
-  #page6 .page6-envelope-scene {
-    height: 275px;
-  }
-
-  #page6 .page6-envelope-wrap {
-    width: 88vw;
-    height: 190px;
-  }
-
-  #page6 .page6-envelope {
-    height: 170px;
-  }
-
-  #page6 .page6-envelope::before {
-    height: 103px;
-  }
-
-  #page6 .page6-envelope::after {
-    height: 96px;
-  }
-
-  #page6 .page6-heart-seal {
-    width: 55px;
-    height: 55px;
-
-    line-height: 55px !important;
-
-    font-size: 24px !important;
-  }
-
-  #page6 .page6-inside-letter {
-    width: calc(100vw - 20px);
-
-    height: 79dvh;
-
-    min-height: 470px;
-  }
-
-  #page6 .page6-paper {
-    padding:
-      30px
-      18px
-      25px;
-  }
-
-  #page6 .page6-letter-title {
-    font-size: 23px !important;
-  }
-
-  #page6 .page6-letter-body,
-  #page6 .page6-letter-body p {
-    font-size: 17px !important;
-
-    line-height: 1.9 !important;
-  }
-
-  #page6 .page6-love-line {
-    font-size: 17px !important;
-  }
-
-  #page6 .page6-ending-title {
-    font-size: 28px !important;
-  }
-
-  #page6 .page6-ending p {
-    font-size: 16px !important;
-  }
+@keyframes p6FadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-
-/* =========================================================
-   DESKTOP
-   ========================================================= */
-
-@media (min-width: 768px) {
-
-  #page6.page6 {
-    padding-top: 65px;
-  }
-
-  #page6 .page6-envelope-scene {
-    height: 340px;
-  }
-
-  #page6 .page6-envelope-wrap {
-    width: 390px;
-  }
-
-  #page6 .page6-inside-letter {
-    width: 600px;
-
-    height: min(760px, 82vh);
-  }
-
-  #page6 .page6-paper {
-    padding:
-      42px
-      48px
-      35px;
-  }
-
-  #page6 .page6-letter-body,
-  #page6 .page6-letter-body p {
-    font-size: 18px !important;
-  }
+@keyframes p6Carrot {
+    0%, 100% {
+        transform: translateY(0) rotate(-4deg);
+    }
+    50% {
+        transform: translateY(-8px) rotate(4deg);
+    }
 }
 
+/* ---------- DESKTOP NHẸ ---------- */
+
+@media (min-width: 700px) {
+
+    .page6 {
+        padding-top: 60px;
+    }
+
+    .p6-envelope {
+        width: 430px;
+    }
+
+    .p6-letter {
+        width: 460px;
+    }
+
+    .p6-paper {
+        padding: 42px 34px 34px;
+    }
+
+    .p6-letter-content p {
+        font-size: 18px;
+    }
+}
 </style>
 
 
-<!-- =========================================================
-     OPENING
-     ========================================================= -->
+<!-- =========================
+     HEADER
+========================= -->
 
-<div class="page6-opening">
+<div class="p6-header">
 
-  <div class="page6-chapter">
-    CHAPTER 06
-  </div>
+    <div class="p6-chapter">
+        CHAPTER 06
+    </div>
 
-  <h2 class="page6-title">
-    THE FINAL CHAPTER
-  </h2>
+    <h2 class="p6-title">
+        THE FINAL CHAPTER
+    </h2>
 
-  <div class="page6-for">
-    For Măm Măm Iu
-  </div>
-
-  <div class="page6-opening-heart">
-    ♡
-  </div>
-
-  <p class="page6-intro">
-    Một chút điều em muốn nói với anh<br>
-    trước khi câu chuyện này khép lại.
-  </p>
+    <p class="p6-subtitle">
+        For Măm Măm Iu ♡
+    </p>
 
 </div>
 
 
-<!-- =========================================================
+<!-- =========================
      ENVELOPE
-     ========================================================= -->
+========================= -->
 
-<div class="page6-envelope-scene">
+<div class="p6-envelope-area">
 
-  <div class="page6-envelope-wrap" id="envelopeWrap">
-
-    <div class="page6-envelope">
-
-      <button
-        class="page6-heart-seal"
-        id="heartSeal"
-        type="button"
-        aria-label="Mở thư"
-      >
-        ♥
-      </button>
-
-    </div>
-
-    <div class="page6-envelope-hint">
-      Chạm vào trái tim để mở thư ♡
-    </div>
-
-
-    <!-- =====================================================
-         INSIDE LETTER
-         ===================================================== -->
-
-    <article
-      class="page6-inside-letter"
-      id="insideLetter"
+    <div
+        class="p6-envelope"
+        id="p6Envelope"
     >
 
-      <div class="page6-paper">
+        <div class="p6-envelope-body"></div>
 
-        <h3 class="page6-letter-title">
-          Sinh nhật anh rồi đó. ❤️
-        </h3>
+        <div class="p6-flap"></div>
 
+        <div class="p6-flap-line"></div>
 
-        <div class="page6-letter-body">
+        <button
+            class="p6-seal"
+            id="p6Seal"
+            aria-label="Mở thư"
+        >
+            ♥
+        </button>
 
-          <p>
-            Vậy là cuối cùng cũng đến sinh nhật anh rồi.
-            Và em muốn dành riêng một chút thời gian để nói
-            với anh những điều mà đôi khi bình thường em không
-            nói hết được.
-          </p>
+        <div class="p6-open-text">
+            chạm vào trái tim để mở thư ♡
+        </div>
 
-          <p>
-            Cảm ơn anh vì đã xuất hiện trong cuộc đời em.
-            Cảm ơn anh vì đã ở bên em trong những khoảng thời gian
-            vui có, buồn có, và cả những lúc hai đứa chẳng hiểu nhau.
-          </p>
+    </div>
 
-          <p>
-            Em rất thích cách anh luôn cố gắng.
-            Anh có trách nhiệm, biết quan tâm đến gia đình,
-            biết lắng nghe, và lúc nào cũng cố gắng làm mọi thứ
-            thật tốt.
-          </p>
-
-          <p>
-            Em cũng thích cái kiểu anh vừa mạnh mẽ,
-            vừa có một chút trẻ con.
-            Vừa làm em cảm thấy được che chở,
-            vừa suốt ngày chọc em tức điên lên. 😂
-          </p>
-
-          <p>
-            Nhưng có một điều em luôn mong anh thay đổi một chút...
-          </p>
+</div>
 
 
-          <div class="page6-love-line">
-            Anh không cần phải hoàn hảo
-            mới xứng đáng được yêu thương.
-          </div>
+<!-- =========================
+     LETTER POPUP
+========================= -->
 
+<div
+    class="p6-letter-overlay"
+    id="p6LetterOverlay"
+>
 
-          <p>
-            Em biết anh thường rất khắt khe với chính mình.
-            Có những lúc anh tự nói mình dở,
-            tự thất vọng về bản thân,
-            hoặc cảm thấy mình chưa đủ tốt.
-          </p>
+    <article class="p6-letter">
 
-          <p>
-            Nhưng anh à...
-            em không yêu anh vì anh hoàn hảo.
-            Em yêu anh vì anh là anh.
-          </p>
+        <div class="p6-paper">
 
-          <p>
-            Em mong sau này anh sẽ dịu dàng với chính mình hơn một chút.
-            Khi mệt thì cho bản thân được nghỉ.
-            Khi làm chưa tốt thì cho bản thân cơ hội làm lại.
-            Và khi nhìn vào bản thân mình,
-            hãy nhớ rằng có một người luôn nhìn thấy
-            rất nhiều điều tốt đẹp ở anh.
-          </p>
+            <div class="p6-letter-small">
+                GỬI ANH — MĂM MĂM IU ♡
+            </div>
 
-          <p>
-            Anh không cần lúc nào cũng phải chứng minh
-            rằng mình giỏi, mình mạnh mẽ hay mình làm được tất cả.
-          </p>
+            <h3 class="p6-letter-title">
+                Sinh nhật anh rồi đó. ❤️
+            </h3>
 
-          <p>
-            Chỉ cần anh vẫn là anh thôi.
-            Thế là đủ rồi. ❤️
-          </p>
+            <div class="p6-letter-content">
 
+                <p>
+                    Nếu anh đang đọc đến đây,
+                    thì có nghĩa là câu chuyện nhỏ
+                    mà em chuẩn bị cho anh cũng sắp đi
+                    đến chương cuối rồi.
+                </p>
 
-          <div class="page6-signature">
-            Happy Birthday, anh. 🤍<br>
-            Em thương anh nhiều.
-          </div>
+                <p>
+                    Em không biết phải viết sao cho thật hay,
+                    nên thôi...
+                    <span class="pink">
+                        em cứ viết những điều em thật sự muốn nói.
+                    </span>
+                </p>
+
+                <p>
+                    Cảm ơn anh vì đã xuất hiện trong cuộc đời em.
+                    Cảm ơn anh vì đã cùng em đi qua rất nhiều
+                    ngày vui, ngày buồn, những lúc cười muốn xỉu
+                    và cả những lúc hai đứa chẳng hiểu nhau.
+                </p>
+
+                <p>
+                    Em rất thích cảm giác ở bên anh.
+                    Vì anh luôn khiến em có cảm giác
+                    mình được che chở và được lắng nghe.
+                </p>
+
+                <div class="p6-heart-line">
+                    ♡ ✦ ♡
+                </div>
+
+                <p>
+                    Em biết anh thường rất khắt khe với chính mình.
+                    Có những lúc anh tự nói mình chưa đủ tốt,
+                    chưa đủ giỏi, hoặc thất vọng về bản thân.
+                </p>
+
+                <p>
+                    Nhưng anh biết không...
+                    <span class="pink">
+                        anh không cần phải hoàn hảo
+                        mới xứng đáng được yêu thương.
+                    </span>
+                </p>
+
+                <p>
+                    Em chỉ mong sau này,
+                    khi anh nhìn lại chính mình,
+                    anh có thể dịu dàng với bản thân hơn một chút.
+                </p>
+
+                <p>
+                    Bởi vì trong mắt em,
+                    anh đã là một người rất đặc biệt rồi.
+                </p>
+
+                <p class="center">
+                    Không cần phải trở thành ai khác.
+                    <br>
+                    Chỉ cần là anh thôi. ❤️
+                </p>
+
+                <div class="p6-heart-line">
+                    🐶 ⚽ 🎂 🩷
+                </div>
+
+                <p>
+                    Và tất nhiên...
+                    em vẫn sẽ tiếp tục chọc anh,
+                    nói nhiều với anh,
+                    cà khịa anh,
+                    rồi lại thương anh như chưa từng có chuyện gì. 😂
+                </p>
+
+                <p>
+                    Chúc anh tuổi mới thật nhiều niềm vui,
+                    thật nhiều điều tốt đẹp,
+                    và quan trọng nhất...
+                    <span class="pink">
+                        hãy luôn nhớ yêu thương chính mình.
+                    </span>
+                </p>
+
+                <div class="p6-sign">
+                    Happy Birthday, anh. 🤍
+                    <br>
+                    Em thương anh nhiều.
+                </div>
+
+            </div>
+
+            <button
+                class="p6-close"
+                id="p6Close"
+            >
+                Đóng thư ♡
+            </button>
 
         </div>
 
-
-        <button
-          class="page6-close-letter"
-          id="closeLetter"
-          type="button"
-        >
-          Đóng thư ♡
-        </button>
-
-      </div>
-
     </article>
-
-  </div>
 
 </div>
 
 
-<!-- =========================================================
+<!-- =========================
      SECRET
-     ========================================================= -->
+========================= -->
 
 <div
-  class="page6-secret"
-  id="page6Secret"
+    class="p6-secret"
+    id="p6Secret"
 >
 
-  <h3 class="page6-secret-title">
-    Khoan.
-    <br>
-    Hình như em còn giấu anh một thứ...
-  </h3>
+    <h3 class="p6-secret-title">
+        Khoan...
+    </h3>
 
-  <p class="page6-secret-text">
-    🥕
-    <br>
-    Hình như có gì đó đang núp ở đây...
-  </p>
+    <p class="p6-secret-text">
+        Hình như em còn giấu anh
+        một thứ nữa...
+        👀
+    </p>
 
-
-  <button
-    class="page6-carrot"
-    id="page6Carrot"
-    type="button"
-    aria-label="Cà rốt bí mật"
-  >
-    🥕
-  </button>
-
-
-  <div
-    class="page6-carrot-hint"
-    id="page6CarrotHint"
-  >
-    Hình như có một món quà cuối cùng
-    đang chờ anh đó... 👀
-  </div>
-
-
-  <button
-    class="page6-gift"
-    id="page6Gift"
-    type="button"
-  >
-    🎁 Mở món quà cuối cùng
-  </button>
-
-
-  <!-- =====================================================
-       VIDEO
-       ===================================================== -->
-
-  <div
-    class="page6-video-wrap"
-    id="page6VideoWrap"
-  >
-
-    <div class="page6-video-message">
-      “Bài hát này có thể không hay...”
-      <br>
-      “nhưng người hát rất yêu anh.” ❤️
-    </div>
-
-    <video
-      class="page6-video"
-      id="page6Video"
-      controls
-      playsinline
-      preload="metadata"
+    <button
+        class="p6-carrot"
+        id="p6Carrot"
+        aria-label="Bí mật"
     >
-      <source
-        src="video/secretgift.mp4"
-        type="video/mp4"
-      >
+        🥕
+    </button>
 
-      Trình duyệt của anh không hỗ trợ video.
-    </video>
-
-  </div>
-
-
-  <!-- =====================================================
-       FINAL ENDING
-       ===================================================== -->
-
-  <div
-    class="page6-ending"
-    id="page6Ending"
-  >
-
-    <h2 class="page6-ending-title">
-      Happy Birthday,
-      <br>
-      Măm Măm Iu. 🎂
-    </h2>
-
-
-    <p>
-      Cảm ơn anh vì đã xuất hiện trong cuộc đời em.
-    </p>
-
-    <p>
-      Cảm ơn vì đã cùng em đi qua những ngày vui,
-      những ngày buồn,
-      và cả những ngày chẳng biết phải làm gì với nhau. 😂
-    </p>
-
-
-    <div class="page6-ending important">
-      Em mong anh sẽ luôn nhớ rằng:
-      <br><br>
-
-      <strong>
-        anh không cần phải hoàn hảo
-        <br>
-        mới xứng đáng được yêu thương.
-      </strong>
+    <div
+        class="p6-hint"
+        id="p6Hint"
+    >
+        Hình như có gì đó đang núp ở đây... 👀
     </div>
 
-
-    <p>
-      Và nếu có lúc anh lại khắt khe với chính mình...
-    </p>
-
-    <p>
-      🥕 hãy nhớ là có một cô gái nói nhiều
-      <br>
-      đang đứng đây nhắc anh.
-    </p>
-
-    <p>
-      Anh giỏi lắm rồi. ❤️
-    </p>
-
-
-    <p class="page6-date">
-      08.02.2025 → ∞
-    </p>
-
-
-    <p class="page6-ps">
-      P/S: Người yêu này không có chính sách đổi trả. 😂
-    </p>
-
-  </div>
+    <button
+        class="p6-gift"
+        id="p6Gift"
+    >
+        🎁 Mở món quà cuối cùng
+    </button>
 
 </div>
 
@@ -1436,182 +692,95 @@ body.page6-letter-open {
 <script>
 (function () {
 
-  /* =======================================================
-     ELEMENTS
-     ======================================================= */
+    const seal = document.getElementById("p6Seal");
+    const overlay = document.getElementById("p6LetterOverlay");
+    const close = document.getElementById("p6Close");
 
-  const page6 = document.getElementById("page6");
+    const secret = document.getElementById("p6Secret");
+    const carrot = document.getElementById("p6Carrot");
+    const hint = document.getElementById("p6Hint");
+    const gift = document.getElementById("p6Gift");
 
-  const envelopeWrap =
-    document.getElementById("envelopeWrap");
+    /* mở thư */
 
-  const heartSeal =
-    document.getElementById("heartSeal");
+    seal.addEventListener("click", function () {
 
-  const closeLetter =
-    document.getElementById("closeLetter");
+        overlay.classList.add("show");
 
-  const secret =
-    document.getElementById("page6Secret");
-
-  const carrot =
-    document.getElementById("page6Carrot");
-
-  const carrotHint =
-    document.getElementById("page6CarrotHint");
-
-  const gift =
-    document.getElementById("page6Gift");
-
-  const videoWrap =
-    document.getElementById("page6VideoWrap");
-
-  const video =
-    document.getElementById("page6Video");
-
-  const ending =
-    document.getElementById("page6Ending");
-
-
-  /* =======================================================
-     OPEN LETTER
-     ======================================================= */
-
-  if (heartSeal) {
-
-    heartSeal.addEventListener("click", function () {
-
-      envelopeWrap.classList.add("is-open");
-
-      document.body.classList.add(
-        "page6-letter-open"
-      );
-
-      setTimeout(function () {
-
-        const letter =
-          document.getElementById("insideLetter");
-
-        if (letter) {
-
-          letter.scrollTop = 0;
-
-        }
-
-      }, 650);
+        document.body.style.overflow = "hidden";
 
     });
 
-  }
 
+    /* đóng thư */
 
-  /* =======================================================
-     CLOSE LETTER
-     ======================================================= */
+    close.addEventListener("click", function () {
 
-  if (closeLetter) {
+        overlay.classList.remove("show");
 
-    closeLetter.addEventListener("click", function () {
-
-      envelopeWrap.classList.remove("is-open");
-
-      document.body.classList.remove(
-        "page6-letter-open"
-      );
-
-
-      setTimeout(function () {
-
-        secret.classList.add("show");
+        document.body.style.overflow = "";
 
         setTimeout(function () {
 
-          secret.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-          });
+            secret.classList.add("show");
 
-        }, 100);
+            secret.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
 
-      }, 700);
+        }, 350);
 
     });
 
-  }
 
-
-  /* =======================================================
-     CARROT
-     ======================================================= */
-
-  if (carrot) {
+    /* click cà rốt */
 
     carrot.addEventListener("click", function () {
 
-      carrot.classList.remove("reveal");
-
-      void carrot.offsetWidth;
-
-      carrot.classList.add("reveal");
-
-      carrotHint.classList.add("show");
-
-      gift.classList.add("show");
+        hint.classList.add("show");
+        gift.classList.add("show");
 
     });
 
-  }
 
-
-  /* =======================================================
-     GIFT
-     ======================================================= */
-
-  if (gift) {
+    /* sang PAGE 7 */
 
     gift.addEventListener("click", function () {
 
-      videoWrap.classList.add("show");
+        /*
+         * Nếu website của bạn dùng hệ thống chuyển page
+         * bằng hàm showPage(), dòng này sẽ gọi Page 7.
+         */
 
-      setTimeout(function () {
+        if (typeof showPage === "function") {
+            showPage(7);
+            return;
+        }
 
-        videoWrap.scrollIntoView({
-          behavior: "smooth",
-          block: "center"
-        });
+        /*
+         * Nếu page dùng class active,
+         * tự tìm page7 / #page7.
+         */
 
-      }, 150);
+        const current = document.querySelector(".page.active");
+        const page7 = document.getElementById("page7");
 
-    });
+        if (current) {
+            current.classList.remove("active");
+        }
 
-  }
-
-
-  /* =======================================================
-     VIDEO END
-     ======================================================= */
-
-  if (video) {
-
-    video.addEventListener("ended", function () {
-
-      ending.classList.add("show");
-
-      setTimeout(function () {
-
-        ending.scrollIntoView({
-          behavior: "smooth",
-          block: "center"
-        });
-
-      }, 200);
+        if (page7) {
+            page7.classList.add("active");
+            page7.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        }
 
     });
-
-  }
 
 })();
 </script>
-
 
 </section>
