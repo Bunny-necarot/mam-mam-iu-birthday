@@ -1,0 +1,1880 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Măm Măm Iu — The Exposed File</title>
+
+
+<style>
+
+/* ==================================================
+   RESET
+================================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+
+    font-family: Arial, sans-serif;
+
+    color: #493d45;
+
+    background:
+        radial-gradient(
+            circle at 15% 10%,
+            rgba(255, 207, 224, 0.8),
+            transparent 25%
+        ),
+
+        radial-gradient(
+            circle at 90% 30%,
+            rgba(255, 226, 237, 0.9),
+            transparent 28%
+        ),
+
+        linear-gradient(
+            180deg,
+            #fff9fb 0%,
+            #fff0f5 45%,
+            #ffffff 100%
+        );
+
+    min-height: 100vh;
+
+    overflow-x: hidden;
+}
+
+
+/* ==================================================
+   FLOATING SPARKLES
+================================================== */
+
+.sparkle {
+
+    position: fixed;
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: #e9a8bf;
+
+    opacity: 0.55;
+
+    pointer-events: none;
+
+    z-index: 0;
+
+    animation:
+        sparkleFloat
+        6s
+        infinite
+        ease-in-out;
+}
+
+.sparkle:nth-child(1) {
+    left: 8%;
+    top: 15%;
+}
+
+.sparkle:nth-child(2) {
+    left: 23%;
+    top: 42%;
+    animation-delay: 1s;
+}
+
+.sparkle:nth-child(3) {
+    left: 45%;
+    top: 20%;
+    animation-delay: 2s;
+}
+
+.sparkle:nth-child(4) {
+    left: 67%;
+    top: 58%;
+    animation-delay: 0.5s;
+}
+
+.sparkle:nth-child(5) {
+    left: 82%;
+    top: 25%;
+    animation-delay: 2.5s;
+}
+
+.sparkle:nth-child(6) {
+    left: 93%;
+    top: 70%;
+    animation-delay: 1.5s;
+}
+
+@keyframes sparkleFloat {
+
+    0% {
+        transform:
+            translateY(0)
+            scale(0.7);
+
+        opacity: 0.15;
+    }
+
+    50% {
+        transform:
+            translateY(-22px)
+            scale(1.2);
+
+        opacity: 0.7;
+    }
+
+    100% {
+        transform:
+            translateY(0)
+            scale(0.7);
+
+        opacity: 0.15;
+    }
+
+}
+
+
+/* ==================================================
+   PAGE
+================================================== */
+
+.page {
+
+    position: relative;
+
+    z-index: 1;
+
+    width: 100%;
+
+    max-width: 1050px;
+
+    margin: auto;
+
+    padding:
+        65px
+        25px
+        100px;
+}
+
+
+/* ==================================================
+   HEADER
+================================================== */
+
+.header {
+
+    text-align: center;
+
+    margin-bottom: 65px;
+}
+
+.confidential {
+
+    display: inline-block;
+
+    padding:
+        7px
+        16px;
+
+    border:
+        1px solid
+        #d895ae;
+
+    border-radius: 999px;
+
+    color: #b86e88;
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    font-weight: bold;
+
+    margin-bottom: 18px;
+
+    background:
+        rgba(255,255,255,0.7);
+}
+
+.title {
+
+    font-size:
+        clamp(
+            34px,
+            7vw,
+            62px
+        );
+
+    line-height: 1.05;
+
+    letter-spacing: 2px;
+
+    color: #694b59;
+
+    margin-bottom: 18px;
+}
+
+.title span {
+
+    color: #c56f91;
+}
+
+.subtitle {
+
+    max-width: 680px;
+
+    margin: auto;
+
+    color: #866f79;
+
+    font-size: 16px;
+
+    line-height: 1.9;
+}
+
+
+/* ==================================================
+   WARNING
+================================================== */
+
+.warning {
+
+    margin:
+        0 auto
+        65px;
+
+    max-width: 760px;
+
+    padding:
+        18px
+        22px;
+
+    text-align: center;
+
+    border-radius: 18px;
+
+    background:
+        rgba(255, 243, 247, 0.9);
+
+    border:
+        1px dashed
+        #df9ab2;
+
+    color: #9b6276;
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* ==================================================
+   EXPOSE CARD
+================================================== */
+
+.expose-card {
+
+    position: relative;
+
+    margin-bottom: 55px;
+
+    padding: 30px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.88
+        );
+
+    border:
+        1px solid
+        rgba(
+            220,
+            164,
+            184,
+            0.55
+        );
+
+    border-radius: 28px;
+
+    box-shadow:
+        0 15px 45px
+        rgba(
+            150,
+            90,
+            115,
+            0.09
+        );
+
+    overflow: hidden;
+}
+
+
+/* red confidential line */
+
+.expose-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    height: 5px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #d77e9e,
+            #f3bfd0,
+            #d77e9e
+        );
+}
+
+
+/* ==================================================
+   CASE HEADER
+================================================== */
+
+.case-header {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    margin-bottom: 24px;
+}
+
+.case-number {
+
+    flex-shrink: 0;
+
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    border-radius: 50%;
+
+    background:
+        #fff0f5;
+
+    border:
+        1px solid
+        #e4a8bc;
+
+    color: #b86e88;
+
+    font-weight: bold;
+
+    font-size: 15px;
+}
+
+.case-label {
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    color: #c17b95;
+
+    font-weight: bold;
+
+    margin-bottom: 5px;
+}
+
+.case-title {
+
+    font-size: 27px;
+
+    color: #664b57;
+
+    line-height: 1.3;
+}
+
+
+/* ==================================================
+   MEDIA
+================================================== */
+
+.case-media {
+
+    width: 100%;
+
+    margin:
+        20px
+        0
+        25px;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    background: #fff7fa;
+
+    border:
+        1px solid
+        rgba(
+            220,
+            170,
+            190,
+            0.4
+        );
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+.case-media img {
+
+    display: block;
+
+    width: 100%;
+
+    height: auto;
+
+    max-height: 600px;
+
+    object-fit: contain;
+}
+
+.case-media video {
+
+    display: block;
+
+    width: 100%;
+
+    height: auto;
+
+    max-height: 600px;
+
+    object-fit: contain;
+
+    background: #000;
+}
+
+
+/* ==================================================
+   EVIDENCE
+================================================== */
+
+.evidence {
+
+    padding:
+        18px
+        20px;
+
+    background:
+        #fff7fa;
+
+    border-left:
+        4px solid
+        #dc8faa;
+
+    border-radius:
+        0
+        14px
+        14px
+        0;
+
+    color: #765f69;
+
+    font-size: 15px;
+
+    line-height: 1.9;
+}
+
+.evidence strong {
+
+    color: #ae607c;
+}
+
+
+/* ==================================================
+   MINI TAGS
+================================================== */
+
+.tags {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-top: 18px;
+}
+
+.tag {
+
+    padding:
+        7px
+        12px;
+
+    border-radius: 999px;
+
+    background: #fff0f5;
+
+    color: #a7657b;
+
+    font-size: 12px;
+}
+
+
+/* ==================================================
+   FINAL VERDICT
+================================================== */
+
+.verdict {
+
+    margin-top: 80px;
+
+    margin-bottom: 70px;
+
+    padding:
+        50px
+        30px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff0f5,
+            #ffffff,
+            #fff4f8
+        );
+
+    border:
+        1px solid
+        #e7b3c5;
+
+    border-radius: 30px;
+
+    box-shadow:
+        0 20px 50px
+        rgba(
+            170,
+            100,
+            125,
+            0.1
+        );
+}
+
+.verdict-label {
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    color: #c27a95;
+
+    font-weight: bold;
+
+    margin-bottom: 18px;
+}
+
+.verdict-title {
+
+    font-size:
+        clamp(
+            27px,
+            5vw,
+            40px
+        );
+
+    color: #704d5c;
+
+    line-height: 1.35;
+
+    margin-bottom: 22px;
+}
+
+.verdict-text {
+
+    max-width: 650px;
+
+    margin: auto;
+
+    font-size: 16px;
+
+    color: #806b74;
+
+    line-height: 1.9;
+}
+
+.verdict-big {
+
+    display: block;
+
+    margin:
+        20px
+        0;
+
+    font-size: 22px;
+
+    color: #b55f7d;
+
+    font-weight: bold;
+}
+
+
+/* ==================================================
+   NEXT PAGE
+================================================== */
+
+.next-section {
+
+    text-align: center;
+
+    cursor: pointer;
+
+    padding:
+        30px
+        15px;
+
+    transition:
+        transform
+        0.3s
+        ease;
+}
+
+.next-section:hover {
+
+    transform:
+        translateY(5px);
+}
+
+.next-text {
+
+    font-size: 14px;
+
+    letter-spacing: 2.5px;
+
+    color: #b56f89;
+
+    font-weight: bold;
+
+    margin-bottom: 14px;
+}
+
+.next-arrow {
+
+    font-size: 28px;
+
+    color: #c47e99;
+
+    animation:
+        arrowMove
+        1.8s
+        infinite
+        ease-in-out;
+}
+
+@keyframes arrowMove {
+
+    0%, 100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(8px);
+    }
+
+}
+
+
+/* ==================================================
+   MOBILE
+================================================== */
+
+@media (max-width: 768px) {
+
+    .page {
+
+        padding:
+            45px
+            15px
+            75px;
+    }
+
+    .header {
+
+        margin-bottom: 45px;
+    }
+
+    .confidential {
+
+        font-size: 9px;
+
+        letter-spacing: 2px;
+    }
+
+    .title {
+
+        font-size: 36px;
+    }
+
+    .subtitle {
+
+        font-size: 14px;
+
+        line-height: 1.8;
+    }
+
+    .warning {
+
+        margin-bottom: 45px;
+
+        padding:
+            16px;
+
+        font-size: 13px;
+    }
+
+
+    /* CARD */
+
+    .expose-card {
+
+        padding:
+            20px
+            17px;
+
+        margin-bottom: 38px;
+
+        border-radius: 22px;
+    }
+
+
+    /* HEADER */
+
+    .case-header {
+
+        gap: 13px;
+
+        margin-bottom: 18px;
+    }
+
+    .case-number {
+
+        width: 45px;
+        height: 45px;
+
+        font-size: 12px;
+    }
+
+    .case-label {
+
+        font-size: 9px;
+
+        letter-spacing: 1.5px;
+    }
+
+    .case-title {
+
+        font-size: 23px;
+    }
+
+
+    /* MEDIA */
+
+    .case-media {
+
+        margin:
+            15px
+            0
+            20px;
+
+        border-radius: 16px;
+    }
+
+    .case-media img {
+
+        width: 100%;
+
+        height: auto;
+
+        max-height: none;
+    }
+
+    .case-media video {
+
+        width: 100%;
+
+        height: auto;
+
+        max-height: none;
+    }
+
+
+    /* EVIDENCE */
+
+    .evidence {
+
+        padding:
+            15px;
+
+        font-size: 14px;
+
+        line-height: 1.85;
+    }
+
+
+    /* TAGS */
+
+    .tag {
+
+        font-size: 11px;
+
+        padding:
+            6px
+            10px;
+    }
+
+
+    /* VERDICT */
+
+    .verdict {
+
+        margin-top: 55px;
+
+        margin-bottom: 50px;
+
+        padding:
+            40px
+            20px;
+
+        border-radius: 23px;
+    }
+
+    .verdict-title {
+
+        font-size: 28px;
+    }
+
+    .verdict-text {
+
+        font-size: 14px;
+
+        line-height: 1.9;
+    }
+
+    .verdict-big {
+
+        font-size: 19px;
+    }
+
+    .next-text {
+
+        font-size: 11px;
+
+        letter-spacing: 2px;
+    }
+
+}
+
+
+/* ==================================================
+   SMALL PHONE
+================================================== */
+
+@media (max-width: 380px) {
+
+    .page {
+
+        padding-left: 11px;
+        padding-right: 11px;
+    }
+
+    .title {
+
+        font-size: 31px;
+    }
+
+    .expose-card {
+
+        padding:
+            17px
+            14px;
+    }
+
+    .case-title {
+
+        font-size: 21px;
+    }
+
+}
+/* ================================
+   PAGE TRANSITION
+   ================================ */
+
+html {
+    background: #fff;
+}
+
+body {
+    opacity: 0;
+    animation: pageEnter 0.7s ease forwards;
+}
+
+body.page-leaving {
+    animation: pageLeave 0.5s ease forwards;
+}
+
+@keyframes pageEnter {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pageLeave {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+html,
+body {
+    overflow-x: hidden;
+}
+/* ================================
+   CHAPTER TRANSITION
+   ================================ */
+
+.chapter-transition {
+    text-align: center;
+    margin: 70px auto 20px;
+    padding: 30px 20px 10px;
+    max-width: 650px;
+}
+
+.chapter-transition-line {
+    width: 45px;
+    height: 1px;
+    background: rgba(255, 180, 210, 0.45);
+    margin: 0 auto 25px;
+}
+
+.chapter-transition-small {
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: #cda1b6;
+    margin-bottom: 18px;
+}
+
+.chapter-transition-main {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 25px;
+    line-height: 1.5;
+    color: #f5dce8;
+}
+
+.chapter-transition-note {
+    margin-top: 14px;
+    font-size: 14px;
+    line-height: 1.8;
+    color: #d5b6c5;
+}
+
+.chapter-transition .next-section {
+    margin-top: 35px;
+}
+
+@media (max-width: 768px) {
+
+    .chapter-transition {
+        margin-top: 50px;
+        padding: 25px 15px 5px;
+    }
+
+    .chapter-transition-main {
+        font-size: 21px;
+    }
+
+    .chapter-transition-note {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 380px) {
+
+    .chapter-transition-main {
+        font-size: 19px;
+    }
+}
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ==================================================
+     SPARKLES
+================================================== -->
+
+<div class="sparkle"></div>
+<div class="sparkle"></div>
+<div class="sparkle"></div>
+<div class="sparkle"></div>
+<div class="sparkle"></div>
+<div class="sparkle"></div>
+
+
+
+<main class="page">
+
+
+<!-- ==================================================
+     HEADER
+================================================== -->
+
+<section class="header">
+
+    <div class="confidential">
+        🔒 CONFIDENTIAL — DO NOT SHOW THE SUBJECT
+    </div>
+
+    <h1 class="title">
+
+        MĂM MĂM IU:
+        <br>
+
+        <span>THE EXPOSED FILE</span>
+
+    </h1>
+
+    <p class="subtitle">
+
+        Sau một thời gian dài điều tra,
+        em đã thu thập được một số bằng chứng
+        về những hành vi rất đáng ngờ của đối tượng
+        mang tên Nghiên Trinh.
+
+        <br>
+
+        Đây là lúc sự thật được phơi bày. 🫵🏻
+
+    </p>
+
+</section>
+
+
+
+<!-- ==================================================
+     WARNING
+================================================== -->
+
+<div class="warning">
+
+    ⚠️ <strong>CẢNH BÁO:</strong>
+    Nội dung dưới đây có thể khiến đối tượng
+    vừa quê vừa muốn cãi lại.
+
+    <br>
+
+    Mọi bằng chứng đều do... người yêu cung cấp.
+    😂
+
+</div>
+
+
+
+<!-- ==================================================
+     CASE 01
+================================================== -->
+
+<section class="expose-card">
+
+
+    <div class="case-header">
+
+        <div class="case-number">
+            01
+        </div>
+
+        <div>
+
+            <div class="case-label">
+                CASE FILE #001
+            </div>
+
+            <h2 class="case-title">
+                Ăn cay như đang trả thù ai đó 🌶️
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="case-media">
+
+        <div>
+
+            <img
+                src="images/expose01.jpg"
+                alt="Măm Măm Iu ăn cay"
+            >
+
+        </div>
+
+    </div>
+
+
+    <div class="evidence">
+
+        <strong>HÀNH VI ĐÁNG NGỜ:</strong>
+
+        Có một người mỗi lần ăn cay
+        đều khiến em tự hỏi:
+
+        <br><br>
+
+        “Anh đang ăn cơm...
+        hay đang tham gia thử thách sinh tồn vậy?”
+
+        😂
+
+        <br><br>
+
+        Em đã nhiều lần cảnh báo.
+        Đối tượng vẫn tiếp tục.
+
+    </div>
+
+
+    <div class="tags">
+
+        <span class="tag">
+            🌶️ Không biết sợ
+        </span>
+
+        <span class="tag">
+            🚨 Tái phạm nhiều lần
+        </span>
+
+        <span class="tag">
+            😂 Bất trị
+        </span>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     CASE 02
+================================================== -->
+
+<section class="expose-card">
+
+
+    <div class="case-header">
+
+        <div class="case-number">
+            02
+        </div>
+
+        <div>
+
+            <div class="case-label">
+                CASE FILE #002
+            </div>
+
+            <h2 class="case-title">
+                Ăn một đống cơm nhưng đồ ăn thì... 🤨
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="case-media">
+
+        <div>
+
+            <img
+                src="images/expose02.jpg"
+                alt="Măm Măm Iu ăn cơm"
+            >
+
+        </div>
+
+    </div>
+
+
+    <div class="evidence">
+
+        <strong>PHÁT HIỆN:</strong>
+
+        Đối tượng có khả năng tiêu thụ
+        một lượng cơm đáng kinh ngạc.
+
+        <br><br>
+
+        Nhưng khi nhìn sang phần đồ ăn...
+
+        <br><br>
+
+        <strong>
+            ...thì em không biết đồ ăn đang ở đâu.
+        </strong>
+
+        😂
+
+        <br><br>
+
+        Một mối quan hệ rất đáng suy ngẫm:
+        cơm = nhân vật chính,
+        đồ ăn = khách mời.
+
+    </div>
+
+
+    <div class="tags">
+
+        <span class="tag">
+            🍚 Team cơm
+        </span>
+
+        <span class="tag">
+            🥢 Đồ ăn chỉ là phụ
+        </span>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     CASE 03
+================================================== -->
+
+<section class="expose-card">
+
+
+    <div class="case-header">
+
+        <div class="case-number">
+            03
+        </div>
+
+        <div>
+
+            <div class="case-label">
+                CASE FILE #003
+            </div>
+
+            <h2 class="case-title">
+                Nhất quyết không chịu mặc áo khoác 🧥
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="case-media">
+
+        <div>
+
+            <img
+                src="images/expose03.jpg"
+                alt="Măm Măm Iu không mặc áo khoác"
+            >
+
+        </div>
+
+    </div>
+
+
+    <div class="evidence">
+
+        <strong>LỜI KHAI CỦA NHÂN CHỨNG:</strong>
+
+        “Anh không lạnh.”
+
+        <br><br>
+
+        Trong khi em đứng bên cạnh nhìn
+        và thấy rõ là...
+
+        <br>
+
+        <strong>ANH CÓ THỂ ĐANG LẠNH.</strong>
+
+        😂
+
+        <br><br>
+
+        Áo khoác được mang theo,
+        nhưng mục đích sử dụng vẫn còn là một bí ẩn.
+
+    </div>
+
+
+    <div class="tags">
+
+        <span class="tag">
+            🧥 Mang nhưng không mặc
+        </span>
+
+        <span class="tag">
+            😑 Không nghe lời
+        </span>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     CASE 04 — VIDEO
+================================================== -->
+
+<section class="expose-card">
+
+
+    <div class="case-header">
+
+        <div class="case-number">
+            04
+        </div>
+
+        <div>
+
+            <div class="case-label">
+                CASE FILE #004
+            </div>
+
+            <h2 class="case-title">
+                Chọc người yêu là nghề tay trái 😂
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="case-media">
+
+        <div>
+
+            <video
+                src="videos/expose04.mp4"
+                controls
+                playsinline
+                preload="metadata"
+            ></video>
+
+        </div>
+
+    </div>
+
+
+    <div class="evidence">
+
+        <strong>BẰNG CHỨNG VIDEO:</strong>
+
+        Đối tượng có kỹ năng đặc biệt
+        trong việc tìm ra đúng cái nút
+        khiến người yêu nổi quạu.
+
+        <br><br>
+
+        Mức độ thành công:
+
+        <br>
+
+        ⭐⭐⭐⭐⭐
+
+        <br><br>
+
+        Mức độ đáng ghét:
+
+        <br>
+
+        <strong>
+            ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐
+        </strong>
+
+        😂
+
+    </div>
+
+
+    <div class="tags">
+
+        <span class="tag">
+            😂 Chuyên gia chọc ghẹo
+        </span>
+
+        <span class="tag">
+            🚨 Tái phạm liên tục
+        </span>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     CASE 05
+================================================== -->
+
+<section class="expose-card">
+
+
+    <div class="case-header">
+
+        <div class="case-number">
+            05
+        </div>
+
+        <div>
+
+            <div class="case-label">
+                CASE FILE #005
+            </div>
+
+            <h2 class="case-title">
+                Kiểm tra bản đồ người yêu 📍
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="case-media">
+
+        <div>
+
+            <img
+                src="images/expose05.jpg"
+                alt="Kiểm tra bản đồ người yêu"
+            >
+
+        </div>
+
+    </div>
+
+
+    <div class="evidence">
+
+        <strong>HỒ SƠ MẬT:</strong>
+
+        Không rõ vì lý do gì,
+        nhưng đối tượng thường xuyên
+        có nhu cầu kiểm tra vị trí
+        của người yêu.
+
+        <br><br>
+
+        Mục đích điều tra hiện chưa rõ.
+
+        <br><br>
+
+        Giả thuyết được đưa ra:
+
+        <br>
+
+        <strong>
+            “Xem hôm nay người yêu đang ở quê nào.” 😂
+        </strong>
+
+    </div>
+
+
+    <div class="tags">
+
+        <span class="tag">
+            📍 Google Maps
+        </span>
+
+        <span class="tag">
+            🕵🏻‍♂️ Điều tra viên
+        </span>
+
+        <span class="tag">
+            😂 Không thể giải thích
+        </span>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     CASE 06 — VIDEO
+================================================== -->
+
+<section class="expose-card">
+
+
+    <div class="case-header">
+
+        <div class="case-number">
+            06
+        </div>
+
+        <div>
+
+            <div class="case-label">
+                CASE FILE #006
+            </div>
+
+            <h2 class="case-title">
+                Gặp cún là mất hình tượng 🐶
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="case-media">
+
+        <div>
+
+            <video
+                src="videos/expose06.mp4"
+                controls
+                playsinline
+                preload="metadata"
+            ></video>
+
+        </div>
+
+    </div>
+
+
+    <div class="evidence">
+
+        <strong>PHÁT HIỆN MỚI:</strong>
+
+        Bình thường nhìn cũng khá ngầu.
+
+        <br><br>
+
+        Nhưng khi gặp một bé cún...
+
+        <br><br>
+
+        <strong>
+            Hình tượng lập tức biến mất.
+        </strong>
+
+        🐶😂
+
+        <br><br>
+
+        Đây cũng chính là một trong
+        những bằng chứng cho thấy
+        đối tượng thực ra khá mềm lòng.
+
+    </div>
+
+
+    <div class="tags">
+
+        <span class="tag">
+            🐶 Yêu cún
+        </span>
+
+        <span class="tag">
+            🤍 Mềm lòng
+        </span>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     CASE 07
+================================================== -->
+
+<section class="expose-card">
+
+
+    <div class="case-header">
+
+        <div class="case-number">
+            07
+        </div>
+
+        <div>
+
+            <div class="case-label">
+                CASE FILE #007
+            </div>
+
+            <h2 class="case-title">
+                Tự chê bản thân quá nhiều 😑
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="case-media">
+
+        <div>
+
+            <img
+                src="images/expose07.jpg"
+                alt="Măm Măm Iu tự chê bản thân"
+            >
+
+        </div>
+
+    </div>
+
+
+    <div class="evidence">
+
+        <strong>TỘI DANH NGHIÊM TRỌNG NHẤT:</strong>
+
+        Đối tượng thường xuyên
+        tự cho rằng mình chưa đủ tốt.
+
+        <br><br>
+
+        Trong khi người yêu đứng bên cạnh
+        đã nhiều lần phản đối.
+
+        <br><br>
+
+        Kết luận của cơ quan điều tra:
+
+        <br><br>
+
+        <strong>
+            Anh không dở.
+            Anh chỉ đang khắt khe với bản thân quá thôi.
+        </strong>
+
+        🤍
+
+    </div>
+
+
+    <div class="tags">
+
+        <span class="tag">
+            🚨 Cần được nhắc nhở
+        </span>
+
+        <span class="tag">
+            🤍 Người yêu không đồng ý
+        </span>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     FINAL VERDICT
+================================================== -->
+
+<section class="verdict">
+
+
+    <div class="verdict-label">
+        FINAL INVESTIGATION RESULT
+    </div>
+
+
+    <h2 class="verdict-title">
+
+        Sau quá trình điều tra...
+
+    </h2>
+
+
+    <p class="verdict-text">
+
+        Đối tượng Nghiên Trinh được xác định
+        có rất nhiều hành vi đáng ngờ.
+
+        <br><br>
+
+        Tuy nhiên, sau khi xem xét toàn bộ hồ sơ,
+        cơ quan điều tra nhận thấy...
+
+        <span class="verdict-big">
+            ĐỐI TƯỢNG RẤT ĐÁNG GHÉT.
+        </span>
+
+        Nhưng thật không may...
+
+        <br><br>
+
+        <strong>
+            người lập hồ sơ lại yêu đối tượng quá nhiều.
+        </strong>
+
+        😂🤍
+
+        <br><br>
+
+        Vì vậy...
+
+        <br>
+
+        <strong>
+            Vụ án tạm thời được khép lại.
+        </strong>
+
+    </p>
+
+</section>
+
+
+
+<!-- ==================================================
+     NEXT PAGE
+================================================== -->
+
+<div class="chapter-transition">
+
+    <div class="chapter-transition-line"></div>
+
+    <div class="chapter-transition-small">
+        CASE CLOSED.
+    </div>
+
+    <div class="chapter-transition-main">
+        Okay... em bóc phốt đủ rồi. 😂
+    </div>
+
+    <div class="chapter-transition-note">
+        Giờ tới lúc nói cho anh biết<br>
+        vì sao em vẫn yêu cái người này nhiều đến vậy. 🤍
+    </div>
+
+    <div class="next-section" onclick="goToPage5()">
+        <div class="next-text">
+            💗 THINGS I LOVE ABOUT YOU
+        </div>
+
+        <div class="next-arrow">
+            ↓
+        </div>
+    </div>
+
+</div>
+
+
+</main>
+
+
+
+<script>
+
+function goToPage5() {
+    document.body.classList.add("page-leaving");
+
+    setTimeout(function () {
+        window.location.href = "page5.html";
+    }, 450);
+}
+
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    document.querySelectorAll("a").forEach(function (link) {
+
+        link.addEventListener("click", function (event) {
+
+            const destination = link.getAttribute("href");
+
+            if (
+                !destination ||
+                destination.startsWith("#") ||
+                destination.startsWith("http") ||
+                link.target === "_blank"
+            ) {
+                return;
+            }
+
+            event.preventDefault();
+
+            document.body.classList.add("page-leaving");
+
+            setTimeout(function () {
+                window.location.href = destination;
+            }, 450);
+
+        });
+
+    });
+
+});
+</script>
+</body>
+
+</html>
