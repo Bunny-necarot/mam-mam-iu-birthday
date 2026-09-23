@@ -4,236 +4,380 @@
 <section class="page6" id="page6">
 
 <style>
-/* =========================
-   PAGE 6 — MOBILE FIRST
-========================= */
+/* =====================================================
+   PAGE 6 — FINAL CHAPTER
+   ===================================================== */
 
 .page6 {
-    min-height: 100vh;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 42px 18px 70px;
-    text-align: center;
-    background: #fff;
-    overflow: hidden;
     position: relative;
+    width: 100%;
+    min-height: 100svh;
+    box-sizing: border-box;
+
+    padding: 38px 10px 70px;
+
+    text-align: center;
+    overflow-x: hidden;
+
+    background:
+        radial-gradient(
+            circle at 10% 15%,
+            rgba(255, 218, 228, .40),
+            transparent 48%
+        ),
+        radial-gradient(
+            circle at 90% 35%,
+            rgba(250, 224, 232, .35),
+            transparent 50%
+        ),
+        radial-gradient(
+            circle at 45% 90%,
+            rgba(255, 228, 235, .38),
+            transparent 52%
+        ),
+        #fff9fa;
 }
 
-/* ---------- HEADER ---------- */
+
+/* =====================================================
+   HEADER
+   ===================================================== */
 
 .p6-header {
-    margin-bottom: 34px;
+    margin-bottom: 25px;
 }
 
 .p6-chapter {
-    font-size: 13px;
+    font-size: 12px;
     letter-spacing: 4px;
     font-weight: 700;
     color: #b58c96;
-    margin-bottom: 10px;
+    margin-bottom: 9px;
 }
 
 .p6-title {
     margin: 0;
-    font-size: clamp(28px, 8vw, 42px);
-    line-height: 1.15;
-    letter-spacing: 1px;
+    font-size: clamp(30px, 9vw, 44px);
+    line-height: 1.1;
     color: #292329;
     font-weight: 800;
 }
 
 .p6-subtitle {
-    margin: 13px 0 0;
-    font-size: 16px;
+    margin: 12px 0 0;
+    font-size: 15px;
     color: #9b7b83;
-    letter-spacing: .5px;
 }
 
-/* ---------- ENVELOPE AREA ---------- */
+
+/* =====================================================
+   PHONG BÌ
+   ===================================================== */
 
 .p6-envelope-area {
     width: 100%;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 28px;
+
+    margin-top: 15px;
 }
 
 .p6-envelope {
-    width: min(88vw, 390px);
-    aspect-ratio: 1.38 / 1;
     position: relative;
+
+    /* TO, GẦN SÁT 2 BÊN MÀN HÌNH */
+    width: min(95vw, 500px);
+
+    aspect-ratio: 1.38 / 1;
+
     cursor: pointer;
-    filter: drop-shadow(0 16px 22px rgba(70, 45, 50, .13));
+
+    filter:
+        drop-shadow(
+            0 18px 25px rgba(70, 45, 50, .13)
+        );
 }
 
-/* thân bìa */
+
+/* =====================================================
+   THÂN BÌA THƯ
+   ===================================================== */
 
 .p6-envelope-body {
     position: absolute;
     inset: 0;
-    background: #fffdfc;
+
+    background: #fffefd;
+
     border: 1.5px solid #222;
-    border-radius: 4px;
+
+    border-radius: 5px;
+
     overflow: hidden;
 }
 
-/* hai đường chéo tạo cảm giác phong bì */
 
-.p6-envelope-body::before,
-.p6-envelope-body::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    width: 71%;
-    height: 1.5px;
-    background: #222;
-}
+/* =====================================================
+   NẮP PHONG BÌ
+   ===================================================== */
 
-.p6-envelope-body::before {
-    left: -9%;
-    transform: rotate(32deg);
-    transform-origin: left center;
-}
-
-.p6-envelope-body::after {
-    right: -9%;
-    transform: rotate(-32deg);
-    transform-origin: right center;
-}
-
-/* tam giác ngược */
+/*
+   Dùng một hình tam giác thật bằng border.
+   Không dùng clip-path.
+*/
 
 .p6-flap {
     position: absolute;
-    z-index: 4;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 68%;
-    background: #fffdfc;
 
-    clip-path: polygon(
-        0 0,
-        100% 0,
-        50% 100%
-    );
-
-    border: none;
-}
-
-/* viền tam giác */
-
-.p6-flap-line {
-    position: absolute;
     z-index: 5;
-    left: 0;
+
+    left: 50%;
     top: 0;
-    width: 100%;
-    height: 68%;
+
+    transform: translateX(-50%);
+
+    width: 0;
+    height: 0;
+
+    border-left: 47.5vw solid transparent;
+    border-right: 47.5vw solid transparent;
+
+    border-top: 0 solid transparent;
+
+    border-bottom:
+        min(46vw, 175px)
+        solid #fffefd;
+
     pointer-events: none;
 }
+
+
+/* đường viền nắp */
+.p6-flap-line {
+    position: absolute;
+
+    z-index: 6;
+
+    left: 50%;
+    top: 0;
+
+    transform: translateX(-50%);
+
+    width: 95vw;
+    max-width: 500px;
+
+    height: min(46vw, 175px);
+
+    pointer-events: none;
+}
+
+
+/*
+   Hai đường tạo thành đúng 1 chữ V lớn
+   = nắp tam giác ngược
+*/
 
 .p6-flap-line::before,
 .p6-flap-line::after {
     content: "";
+
     position: absolute;
+
     top: 0;
-    width: 50%;
-    height: 100%;
-    border-top: 1.5px solid #222;
+
+    width: 51%;
+
+    height: 1.5px;
+
+    background: #222;
 }
 
+
+/* cạnh trái của tam giác */
 .p6-flap-line::before {
     left: 0;
-    border-left: 1.5px solid #222;
-    clip-path: polygon(0 0, 100% 0, 100% 100%);
+
+    transform-origin: left center;
+
+    transform:
+        rotate(
+            20deg
+        );
 }
 
+
+/* cạnh phải của tam giác */
 .p6-flap-line::after {
     right: 0;
-    border-right: 1.5px solid #222;
-    clip-path: polygon(0 100%, 0 0, 100% 0);
+
+    transform-origin: right center;
+
+    transform:
+        rotate(
+            -20deg
+        );
 }
 
-/* tim con dấu */
+
+/* =====================================================
+   CON DẤU TRÁI TIM
+   ===================================================== */
 
 .p6-seal {
     position: absolute;
-    z-index: 10;
+
+    z-index: 20;
+
     left: 50%;
-    top: 46%;
-    transform: translate(-50%, -50%);
-    width: 66px;
-    height: 66px;
+
+    /*
+       nằm ngay trên điểm giữa của nắp
+    */
+    top: min(46vw, 175px);
+
+    transform:
+        translate(-50%, -50%);
+
+    width: 64px;
+    height: 64px;
+
     border-radius: 50%;
+
     border: 1.5px solid #222;
-    background: #ff8fa8;
+
+    background: #f3a6ba;
+
     display: flex;
-    justify-content: center;
+
     align-items: center;
-    font-size: 30px;
-    color: #fff;
-    box-shadow: 0 5px 12px rgba(255, 105, 135, .28);
-    transition: transform .25s ease;
+    justify-content: center;
+
+    font-size: 29px;
+
+    color: white;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 6px 15px
+        rgba(100, 50, 65, .13);
+
+    transition:
+        transform .25s ease;
 }
 
 .p6-envelope:active .p6-seal {
-    transform: translate(-50%, -50%) scale(.94);
+    transform:
+        translate(-50%, -50%)
+        scale(.94);
 }
+
+
+/* =====================================================
+   TEXT
+   ===================================================== */
 
 .p6-open-text {
     position: absolute;
-    z-index: 11;
+
+    z-index: 20;
+
     bottom: 13px;
+
     left: 50%;
-    transform: translateX(-50%);
+
+    transform:
+        translateX(-50%);
+
     width: 100%;
+
     font-size: 13px;
-    letter-spacing: 1px;
+
     color: #8e7078;
+
+    letter-spacing: .8px;
 }
 
-/* ---------- POPUP LÁ THƯ ---------- */
+
+/* =====================================================
+   POPUP LÁ THƯ
+   ===================================================== */
 
 .p6-letter-overlay {
     position: fixed;
+
     inset: 0;
+
     z-index: 9999;
-    background: rgba(38, 27, 31, .42);
+
+    background:
+        rgba(38, 27, 31, .40);
+
     display: flex;
+
     align-items: center;
     justify-content: center;
-    padding: 18px;
+
+    padding: 10px;
+
     box-sizing: border-box;
 
     opacity: 0;
+
     visibility: hidden;
+
     pointer-events: none;
 
-    transition: opacity .35s ease, visibility .35s ease;
+    transition:
+        opacity .35s ease,
+        visibility .35s ease;
 }
 
 .p6-letter-overlay.show {
     opacity: 1;
+
     visibility: visible;
+
     pointer-events: auto;
 }
 
-/* lá thư */
+
+/* =====================================================
+   LÁ THƯ
+   ===================================================== */
 
 .p6-letter {
-    width: min(94vw, 420px);
-    max-height: 88vh;
-    background: #fffdf7;
-    border-radius: 4px;
     position: relative;
+
+    width: 94vw;
+
+    height:
+        calc(
+            100svh - 20px
+        );
+
+    max-width: 500px;
+
+    background: #fffdf7;
+
+    border-radius: 5px;
+
     overflow: hidden;
 
-    box-shadow:
-        0 20px 60px rgba(0,0,0,.24);
+    display: flex;
 
-    transform: translateY(80px) scale(.92);
+    flex-direction: column;
+
+    box-shadow:
+        0 20px 60px
+        rgba(0,0,0,.24);
+
+    transform:
+        translateY(70px)
+        scale(.94);
+
     opacity: 0;
 
     transition:
@@ -242,17 +386,31 @@
 }
 
 .p6-letter-overlay.show .p6-letter {
-    transform: translateY(0) scale(1);
+    transform:
+        translateY(0)
+        scale(1);
+
     opacity: 1;
 }
 
-/* phần giấy cuộn */
+
+/* =====================================================
+   GIẤY
+   ===================================================== */
 
 .p6-paper {
-    max-height: 88vh;
+    flex: 1;
+
+    min-height: 0;
+
     overflow-y: auto;
+
     -webkit-overflow-scrolling: touch;
-    padding: 35px 23px 30px;
+
+    padding:
+        28px 20px 15px;
+
+    box-sizing: border-box;
 
     background:
         repeating-linear-gradient(
@@ -264,48 +422,52 @@
         );
 }
 
-/* lề trái */
 
-.p6-paper::before {
-    content: "";
-    position: absolute;
-    left: 18px;
-    top: 0;
-    bottom: 0;
-    width: 1px;
-    background: rgba(238, 150, 170, .42);
-}
-
-/* nội dung */
+/* =====================================================
+   NỘI DUNG
+   ===================================================== */
 
 .p6-letter-small {
-    font-size: 13px;
+    font-size: 12px;
+
     letter-spacing: 2px;
+
     color: #ad8790;
-    margin-bottom: 12px;
+
+    margin-bottom: 10px;
 }
 
 .p6-letter-title {
-    margin: 0 0 24px;
-    font-size: clamp(24px, 7vw, 31px);
+    margin: 0 0 22px;
+
+    font-size:
+        clamp(25px, 7vw, 32px);
+
     line-height: 1.3;
+
     color: #30262b;
 }
 
 .p6-letter-content {
     text-align: left;
-    padding-left: 8px;
+
+    padding-left: 7px;
 }
 
 .p6-letter-content p {
-    margin: 0 0 24px;
-    font-size: 17px;
-    line-height: 2;
+    margin:
+        0 0 23px;
+
+    font-size: 16px;
+
+    line-height: 1.9;
+
     color: #41383c;
 }
 
 .p6-letter-content .pink {
-    color: #e56f8a;
+    color: #d96f87;
+
     font-weight: 700;
 }
 
@@ -315,38 +477,80 @@
 
 .p6-heart-line {
     text-align: center;
-    font-size: 23px;
-    margin: 7px 0 24px;
+
+    font-size: 22px;
+
+    margin:
+        5px 0 23px;
 }
 
 .p6-sign {
     text-align: right;
-    margin-top: 32px;
+
+    margin-top: 28px;
+
     padding-right: 5px;
-    font-size: 16px;
+
+    font-size: 15px;
+
     line-height: 1.9;
+
     color: #54474b;
 }
 
+
+/* =====================================================
+   NÚT ĐÓNG
+   ===================================================== */
+
 .p6-close {
-    width: 100%;
-    margin-top: 28px;
-    padding: 14px 18px;
-    border: 1px solid #d8a5b0;
+    flex-shrink: 0;
+
+    width:
+        calc(100% - 24px);
+
+    margin:
+        8px 12px
+        10px;
+
+    padding:
+        13px 18px;
+
+    border:
+        1px solid #d8a5b0;
+
     border-radius: 30px;
-    background: #fff;
+
+    background:
+        rgba(255,255,255,.97);
+
     color: #9e6472;
+
     font-size: 15px;
+
     font-weight: 700;
+
     cursor: pointer;
+
+    box-shadow:
+        0 -4px 12px
+        rgba(80,40,50,.05);
 }
 
-/* ---------- SECRET ---------- */
+
+/* =====================================================
+   SECRET
+   ===================================================== */
 
 .p6-secret {
     display: none;
+
     margin-top: 45px;
-    animation: p6FadeUp .8s ease both;
+
+    padding-bottom: 20px;
+
+    animation:
+        p6FadeUp .8s ease both;
 }
 
 .p6-secret.show {
@@ -355,37 +559,57 @@
 
 .p6-secret-title {
     margin: 0 0 16px;
-    font-size: clamp(25px, 7vw, 34px);
-    line-height: 1.3;
+
+    font-size:
+        clamp(25px, 7vw, 34px);
+
     color: #30262b;
 }
 
 .p6-secret-text {
-    margin: 0 auto 20px;
+    margin:
+        0 auto 20px;
+
     max-width: 330px;
+
     font-size: 16px;
+
     line-height: 1.8;
+
     color: #76636a;
 }
 
 .p6-carrot {
     display: inline-flex;
+
     width: 82px;
     height: 82px;
+
     align-items: center;
     justify-content: center;
+
     border: none;
+
     background: #fff3f5;
+
     border-radius: 50%;
+
     font-size: 46px;
+
     cursor: pointer;
-    animation: p6Carrot 1.8s ease-in-out infinite;
+
+    animation:
+        p6Carrot 1.8s ease-in-out infinite;
 }
 
 .p6-hint {
     display: none;
-    margin: 15px auto 18px;
+
+    margin:
+        15px auto 18px;
+
     font-size: 15px;
+
     color: #a66e79;
 }
 
@@ -395,67 +619,145 @@
 
 .p6-gift {
     display: none;
-    margin: 15px auto 0;
-    padding: 15px 25px;
+
+    margin-top: 15px;
+
+    padding:
+        15px 25px;
+
     border: none;
+
     border-radius: 30px;
-    background: #ff8fa8;
+
+    background: #f2a5b8;
+
     color: white;
+
     font-size: 16px;
+
     font-weight: 700;
-    box-shadow: 0 9px 20px rgba(255, 143, 168, .28);
+
     cursor: pointer;
 }
 
 .p6-gift.show {
     display: inline-block;
-    animation: p6FadeUp .5s ease both;
+
+    animation:
+        p6FadeUp .5s ease both;
 }
 
-/* ---------- ANIMATION ---------- */
+
+/* =====================================================
+   ANIMATION
+   ===================================================== */
 
 @keyframes p6FadeUp {
     from {
         opacity: 0;
-        transform: translateY(18px);
+        transform:
+            translateY(18px);
     }
+
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform:
+            translateY(0);
     }
 }
 
 @keyframes p6Carrot {
     0%, 100% {
-        transform: translateY(0) rotate(-4deg);
+        transform:
+            translateY(0)
+            rotate(-4deg);
     }
+
     50% {
-        transform: translateY(-8px) rotate(4deg);
+        transform:
+            translateY(-8px)
+            rotate(4deg);
     }
 }
 
-/* ---------- DESKTOP NHẸ ---------- */
+
+/* =====================================================
+   MOBILE NHỎ
+   ===================================================== */
+
+@media (max-width: 430px) {
+
+    .page6 {
+        padding:
+            32px 8px
+            calc(
+                55px +
+                env(safe-area-inset-bottom)
+            );
+    }
+
+    .p6-envelope {
+        width: 96vw;
+    }
+
+    .p6-flap {
+        border-left-width: 48vw;
+        border-right-width: 48vw;
+
+        border-bottom:
+            min(46vw, 175px)
+            solid #fffefd;
+    }
+
+    .p6-flap-line {
+        width: 96vw;
+
+        height:
+            min(46vw, 175px);
+    }
+
+    .p6-seal {
+        top:
+            min(46vw, 175px);
+
+        width: 58px;
+        height: 58px;
+
+        font-size: 26px;
+    }
+
+    .p6-letter {
+        width: 95vw;
+
+        height:
+            calc(
+                100svh - 20px
+            );
+    }
+}
+
+
+/* =====================================================
+   DESKTOP
+   ===================================================== */
 
 @media (min-width: 700px) {
 
     .page6 {
-        padding-top: 60px;
+        padding-top: 55px;
     }
 
     .p6-envelope {
-        width: 430px;
+        width: 500px;
     }
 
-    .p6-letter {
-        width: 460px;
+    .p6-flap {
+        border-left-width: 250px;
+        border-right-width: 250px;
     }
 
-    .p6-paper {
-        padding: 42px 34px 34px;
-    }
-
-    .p6-letter-content p {
-        font-size: 18px;
+    .p6-flap-line {
+        width: 500px;
     }
 }
 </style>
