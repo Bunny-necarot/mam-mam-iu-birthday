@@ -1,0 +1,2433 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Măm Măm Iu — Character Profile</title>
+
+<style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color: #f8edf4;
+
+    background:
+        radial-gradient(
+            circle at 50% 25%,
+            #402044 0%,
+            #211327 38%,
+            #0c0911 100%
+        );
+}
+
+
+/* =====================================================
+   BACKGROUND LIGHT
+===================================================== */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(244,179,214,.13),
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at 15% 80%,
+            rgba(255,120,180,.08),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(255,220,240,.07),
+            transparent 25%
+        );
+
+    z-index: 0;
+}
+
+
+/* =====================================================
+   STARS
+===================================================== */
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: .35;
+
+    background-image:
+        radial-gradient(
+            circle,
+            #fff 1px,
+            transparent 1.5px
+        );
+
+    background-size: 85px 85px;
+
+    animation:
+        starMove
+        12s
+        linear
+        infinite;
+
+    z-index: 0;
+}
+
+@keyframes starMove {
+
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-85px);
+    }
+
+}
+
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+.game-page {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    max-width: 900px;
+
+    min-height: 100vh;
+
+    margin: 0 auto;
+
+    padding:
+        35px
+        18px
+        70px;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.game-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.game-small-title {
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #e8a9ca;
+    margin-bottom: 7px;
+}
+
+.game-title {
+    margin: 0;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(
+            30px,
+            8vw,
+            48px
+        );
+
+    letter-spacing: 3px;
+    color: #fff3fa;
+
+    text-shadow:
+        0 0 8px rgba(255,180,220,.6),
+        0 3px 12px rgba(0,0,0,.6);
+}
+
+.game-subtitle {
+    margin-top: 9px;
+    font-size: 13px;
+    color: #c99ab5;
+}
+
+
+/* =====================================================
+   CHARACTER STAGE
+===================================================== */
+
+.character-stage {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        minmax(260px, 350px)
+        1fr;
+
+    align-items: center;
+
+    gap: 16px;
+
+    min-height: 570px;
+}
+
+
+/* =====================================================
+   SKILL COLUMNS
+===================================================== */
+
+.skill-column {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+
+/* =====================================================
+   SKILL CARD
+===================================================== */
+
+.skill-card {
+    position: relative;
+
+    min-height: 90px;
+
+    padding: 13px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(54,30,54,.95),
+            rgba(25,17,30,.96)
+        );
+
+    border:
+        1px solid
+        rgba(225,153,194,.35);
+
+    box-shadow:
+        0 8px 22px rgba(0,0,0,.35),
+        inset 0 0 18px rgba(255,150,205,.05);
+
+    clip-path:
+        polygon(
+            0 0,
+            92% 0,
+            100% 18%,
+            100% 100%,
+            8% 100%,
+            0 82%
+        );
+
+    cursor: pointer;
+
+    transition:
+        transform .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-4px);
+
+    border-color:
+        rgba(255,190,225,.8);
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.5),
+        0 0 20px rgba(230,130,190,.12);
+}
+
+
+/* =====================================================
+   SKILL ICON
+===================================================== */
+
+.skill-icon {
+    flex: 0 0 45px;
+
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6b3459,
+            #29172c
+        );
+
+    border:
+        1px solid
+        rgba(255,210,235,.4);
+
+    font-size: 25px;
+
+    box-shadow:
+        inset 0 0 12px
+        rgba(255,255,255,.05);
+}
+
+.skill-info {
+    min-width: 0;
+}
+
+.skill-type {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+
+    color: #b989a6;
+
+    text-transform: uppercase;
+
+    margin-bottom: 3px;
+}
+
+.skill-name {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    color: #f8dceb;
+}
+
+.skill-description {
+    margin-top: 4px;
+
+    font-size: 11px;
+    line-height: 1.35;
+
+    color: #bfa6b5;
+}
+
+
+/* =====================================================
+   CENTER CHARACTER
+===================================================== */
+
+.character-card {
+    position: relative;
+
+    width: 100%;
+
+    min-height: 540px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: flex-end;
+
+    padding-bottom: 20px;
+}
+
+.character-glow {
+    position: absolute;
+
+    width: 270px;
+    height: 270px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,173,215,.35),
+            rgba(255,120,190,.08) 45%,
+            transparent 70%
+        );
+
+    filter: blur(12px);
+
+    top: 85px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    animation:
+        characterGlow
+        3s
+        ease-in-out
+        infinite;
+}
+
+@keyframes characterGlow {
+
+    0%, 100% {
+        transform:
+            translateX(-50%)
+            scale(1);
+
+        opacity: .8;
+    }
+
+    50% {
+        transform:
+            translateX(-50%)
+            scale(1.08);
+
+        opacity: 1;
+    }
+
+}
+
+
+/* =====================================================
+   CHARACTER IMAGE
+===================================================== */
+
+.character-image-frame {
+    position: relative;
+
+    z-index: 2;
+
+    width:
+        min(
+            310px,
+            75vw
+        );
+
+    aspect-ratio: 3 / 4;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            180deg,
+            #5a3152,
+            #1a101b
+        );
+
+    border:
+        2px solid
+        rgba(235,177,210,.65);
+
+    box-shadow:
+        0 0 0 5px
+        rgba(255,255,255,.03),
+
+        0 20px 50px
+        rgba(0,0,0,.55),
+
+        0 0 35px
+        rgba(238,146,199,.16);
+
+    clip-path:
+        polygon(
+            8% 0,
+            92% 0,
+            100% 8%,
+            100% 92%,
+            92% 100%,
+            8% 100%,
+            0 92%,
+            0 8%
+        );
+}
+
+.character-image-frame img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.character-image-frame::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent 55%,
+            rgba(9,5,12,.72) 100%
+        );
+
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   NAME
+===================================================== */
+
+.name-plate {
+    position: relative;
+
+    z-index: 5;
+
+    margin-top: -65px;
+
+    text-align: center;
+}
+
+.name {
+    margin: 0;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(
+            26px,
+            7vw,
+            37px
+        );
+
+    letter-spacing: 2px;
+
+    color: #fff4fa;
+
+    text-shadow:
+        0 2px 8px #000;
+}
+
+.nickname {
+    margin-top: 5px;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+    color: #e6a9c9;
+}
+
+
+/* =====================================================
+   MINI STATS
+===================================================== */
+
+.mini-stats {
+    position: relative;
+
+    z-index: 5;
+
+    display: flex;
+    justify-content: center;
+
+    gap: 7px;
+
+    margin-top: 13px;
+}
+
+.stat-pill {
+    padding:
+        6px
+        9px;
+
+    border:
+        1px solid
+        rgba(239,183,215,.25);
+
+    background:
+        rgba(20,12,23,.8);
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+
+    color: #cfa7bb;
+}
+
+
+/* =====================================================
+   PASSIVE
+===================================================== */
+
+.passive-card {
+    position: relative;
+
+    margin:
+        25px
+        auto
+        0;
+
+    max-width: 570px;
+
+    padding:
+        17px
+        20px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(61,29,51,.95),
+            rgba(27,16,30,.98)
+        );
+
+    border:
+        1px solid
+        rgba(238,171,207,.4);
+
+    box-shadow:
+        0 10px 35px
+        rgba(0,0,0,.4);
+}
+
+.passive-label {
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    color: #b985a5;
+
+    margin-bottom: 5px;
+}
+
+.passive-main {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 18px;
+
+    color: #ffd8eb;
+}
+
+.passive-main span {
+    color: #ff9fc9;
+}
+
+.passive-sub {
+    margin-top: 6px;
+
+    font-size: 11px;
+
+    color: #bfa6b5;
+}
+
+
+/* =====================================================
+   NEXT
+===================================================== */
+
+.next-section {
+    margin-top: 45px;
+
+    text-align: center;
+}
+
+.next-text {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 15px;
+
+    color: #d6a8be;
+
+    letter-spacing: 1px;
+}
+
+.next-arrow {
+    display: block;
+
+    margin-top: 8px;
+
+    font-size: 22px;
+
+    color: #f2bdd7;
+
+    animation:
+        arrowMove
+        1.8s
+        ease-in-out
+        infinite;
+}
+
+@keyframes arrowMove {
+
+    0%, 100% {
+        transform: translateY(0);
+        opacity: .7;
+    }
+
+    50% {
+        transform: translateY(7px);
+        opacity: 1;
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .game-page {
+        width: 100%;
+        max-width: 100%;
+
+        padding:
+            24px
+            12px
+            55px;
+
+        overflow-x: hidden;
+    }
+
+
+    .game-header {
+        margin-bottom: 18px;
+    }
+
+
+    .game-small-title {
+        font-size: 9px;
+        letter-spacing: 3px;
+    }
+
+
+    .game-title {
+        font-size:
+            clamp(
+                28px,
+                9vw,
+                40px
+            );
+
+        letter-spacing: 1.5px;
+        line-height: 1.1;
+    }
+
+
+    .game-subtitle {
+        font-size: 11px;
+        margin-top: 7px;
+    }
+
+
+    .character-stage {
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+
+        gap: 14px;
+
+        min-height: auto;
+    }
+
+
+    .character-card {
+        order: 1;
+
+        width: 100%;
+
+        min-height: auto;
+
+        padding-bottom: 8px;
+    }
+
+
+    .character-glow {
+        width: 230px;
+        height: 230px;
+        top: 45px;
+    }
+
+
+    .character-image-frame {
+        width:
+            min(
+                280px,
+                76vw
+            );
+    }
+
+
+    .name-plate {
+        margin-top: -48px;
+    }
+
+
+    .name {
+        font-size:
+            clamp(
+                25px,
+                8vw,
+                34px
+            );
+
+        letter-spacing: 1px;
+    }
+
+
+    .nickname {
+        font-size: 11px;
+        letter-spacing: 1.5px;
+    }
+
+
+    .mini-stats {
+        gap: 5px;
+        margin-top: 10px;
+
+        flex-wrap: wrap;
+    }
+
+
+    .stat-pill {
+        padding:
+            5px
+            7px;
+
+        font-size: 8px;
+    }
+
+
+    .skill-column {
+        width: 100%;
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 8px;
+    }
+
+
+    .skill-column.left {
+        order: 2;
+    }
+
+
+    .skill-column.right {
+        order: 3;
+    }
+
+
+    .skill-card {
+        width: 100%;
+
+        min-height: 105px;
+
+        padding:
+            10px
+            8px;
+
+        gap: 7px;
+
+        align-items: flex-start;
+
+        overflow: hidden;
+    }
+
+
+    .skill-icon {
+        flex:
+            0 0 34px;
+
+        width: 34px;
+        height: 34px;
+
+        font-size: 18px;
+    }
+
+
+    .skill-type {
+        font-size: 7px;
+
+        letter-spacing: 1px;
+
+        white-space: nowrap;
+
+        overflow: hidden;
+
+        text-overflow: ellipsis;
+    }
+
+
+    .skill-name {
+        font-size: 11px;
+        line-height: 1.25;
+
+        word-break: break-word;
+    }
+
+
+    .skill-description {
+        font-size: 8.5px;
+
+        line-height: 1.35;
+
+        margin-top: 3px;
+
+        word-break: break-word;
+    }
+
+
+    .passive-card {
+        position: relative;
+
+        width: 100%;
+        max-width: 570px;
+
+        margin:
+            25px
+            auto
+            0;
+
+        padding:
+            17px
+            20px;
+
+        text-align: center;
+    }
+
+
+    .next-section {
+        margin-top: 30px;
+        padding-bottom: 10px;
+    }
+
+
+    .next-text {
+        font-size: 13px;
+    }
+
+
+    .next-arrow {
+        font-size: 19px;
+    }
+
+}
+
+
+/* =====================================================
+   VERY SMALL PHONES
+===================================================== */
+
+@media (max-width: 380px) {
+
+    .game-page {
+        padding-left: 9px;
+        padding-right: 9px;
+    }
+
+
+    .skill-column {
+        gap: 7px;
+    }
+
+
+    .skill-card {
+        min-height: 108px;
+
+        padding:
+            9px
+            7px;
+    }
+
+
+    .skill-icon {
+        flex-basis: 30px;
+
+        width: 30px;
+        height: 30px;
+
+        font-size: 16px;
+    }
+
+
+    .skill-name {
+        font-size: 10.5px;
+    }
+
+
+    .skill-description {
+        font-size: 8px;
+    }
+
+
+    .character-image-frame {
+        width: 73vw;
+    }
+
+}
+
+
+/* =====================================================
+   SKILL POPUP
+===================================================== */
+
+.skill-popup-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 14px;
+
+    background:
+        rgba(8,5,12,.78);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity .3s ease,
+        visibility .3s ease;
+}
+
+.skill-popup-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.skill-popup {
+    position: relative;
+
+    width:
+        min(
+            390px,
+            100%
+        );
+
+    padding:
+        20px
+        14px
+        20px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #382039,
+            #17101d
+        );
+
+    border:
+        1px solid
+        rgba(244,185,218,.45);
+
+    box-shadow:
+        0 25px 70px
+        rgba(0,0,0,.65),
+
+        0 0 35px
+        rgba(237,137,194,.15);
+
+    transform:
+        scale(.85)
+        translateY(20px);
+
+    transition:
+        transform .35s ease;
+}
+
+.skill-popup-overlay.show
+.skill-popup {
+    transform:
+        scale(1)
+        translateY(0);
+}
+
+
+.skill-popup-close {
+    position: absolute;
+
+    top: 8px;
+    right: 10px;
+
+    z-index: 10;
+
+    width: 32px;
+    height: 32px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.08);
+
+    color: #f9dceb;
+
+    font-size: 24px;
+    line-height: 30px;
+
+    cursor: pointer;
+}
+
+
+.skill-popup-title {
+    margin-bottom: 12px;
+
+    padding-right: 35px;
+
+    text-align: center;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 19px;
+
+    color: #ffe5f2;
+}
+
+
+.skill-popup-gallery {
+    position: relative;
+
+    width: 100%;
+
+    touch-action: pan-y;
+}
+
+
+.skill-popup-image {
+    width: 100%;
+    max-height: 65vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    border-radius: 13px;
+
+    border:
+        1px solid
+        rgba(255,210,235,.25);
+
+    background: #100b13;
+}
+
+
+.skill-popup-image img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    max-width: 100%;
+    max-height: 65vh;
+
+    object-fit: contain;
+
+    user-select: none;
+
+    -webkit-user-drag: none;
+}
+
+.skill-popup-nav {
+    position: absolute;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    z-index: 5;
+
+    width: 38px;
+    height: 38px;
+
+    border:
+        1px solid
+        rgba(255,220,238,.35);
+
+    border-radius: 50%;
+
+    background:
+        rgba(15,9,18,.72);
+
+    color: #ffe5f2;
+
+    font-size: 25px;
+    line-height: 34px;
+
+    cursor: pointer;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.skill-popup-nav.show {
+    display: flex;
+}
+
+.skill-popup-prev {
+    left: 8px;
+}
+
+.skill-popup-next {
+    right: 8px;
+}
+
+
+.skill-popup-counter {
+    margin-top: 8px;
+
+    text-align: center;
+
+    font-size: 10px;
+
+    letter-spacing: 1.5px;
+
+    color: #cfa7bb;
+
+    display: none;
+}
+
+.skill-popup-counter.show {
+    display: block;
+}
+
+
+.skill-popup-text {
+    margin-top: 13px;
+
+    padding:
+        11px
+        12px;
+
+    border-radius: 13px;
+
+    background:
+        rgba(255,220,238,.07);
+
+    border-left:
+        3px solid
+        #d982ad;
+
+    color: #f1d8e5;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    text-align: center;
+
+    font-style: italic;
+}
+
+
+@media (max-width: 700px) {
+
+    .skill-popup {
+        width:
+            min(
+                390px,
+                96vw
+            );
+
+        padding:
+            18px
+            10px
+            18px;
+    }
+
+
+    .skill-popup-title {
+        font-size: 17px;
+        margin-bottom: 10px;
+    }
+
+
+    .skill-popup-nav {
+        width: 34px;
+        height: 34px;
+
+        font-size: 22px;
+    }
+
+
+    .skill-popup-prev {
+        left: 6px;
+    }
+
+
+    .skill-popup-next {
+        right: 6px;
+    }
+
+
+    .skill-popup-text {
+        font-size: 12px;
+    }
+
+}
+/* ================================
+   PAGE TRANSITION
+   ================================ */
+
+html {
+    background: #fff;
+}
+
+body {
+    opacity: 0;
+    animation: pageEnter 0.7s ease forwards;
+}
+
+body.page-leaving {
+    animation: pageLeave 0.5s ease forwards;
+}
+
+@keyframes pageEnter {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pageLeave {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+/* tránh thanh ngang trên điện thoại */
+html,
+body {
+    overflow-x: hidden;
+}
+</style>
+
+</head>
+
+
+<body>
+
+<main class="game-page">
+
+
+    <!-- =================================================
+         HEADER
+    ================================================== -->
+
+    <header class="game-header">
+
+        <div class="game-small-title">
+            BIRTHDAY BOY
+        </div>
+
+        <h1 class="game-title">
+            CHARACTER PROFILE
+        </h1>
+
+        <div class="game-subtitle">
+            Một nhân vật đặc biệt đã được mở khóa. ✦
+        </div>
+
+    </header>
+
+
+    <!-- =================================================
+         CHARACTER STAGE
+    ================================================== -->
+
+    <section class="character-stage">
+
+
+        <!-- =================================================
+             LEFT SKILLS
+        ================================================== -->
+
+        <div class="skill-column left">
+
+
+            <!-- FOOTBALL -->
+
+            <div
+                class="skill-card"
+                onclick="openSkillPopup('football')"
+            >
+
+                <div class="skill-icon">
+                    ⚽
+                </div>
+
+                <div class="skill-info">
+
+                    <div class="skill-type">
+                        SKILL 01
+                    </div>
+
+                    <div class="skill-name">
+                        Đá banh
+                    </div>
+
+                    <div class="skill-description">
+                        Có thể biến một buổi chiều bình thường
+                        thành một trận đấu.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SING -->
+
+            <div
+                class="skill-card"
+                onclick="openSkillPopup('sing')"
+            >
+
+                <div class="skill-icon">
+                    🎤
+                </div>
+
+                <div class="skill-info">
+
+                    <div class="skill-type">
+                        SKILL 02
+                    </div>
+
+                    <div class="skill-name">
+                        Hát
+                    </div>
+
+                    <div class="skill-description">
+                        Skill phụ nhưng được sử dụng
+                        khá thường xuyên.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- DOG -->
+
+            <div
+                class="skill-card"
+                onclick="openSkillPopup('dog')"
+            >
+
+                <div class="skill-icon">
+                    🐶
+                </div>
+
+                <div class="skill-info">
+
+                    <div class="skill-type">
+                        WEAKNESS
+                    </div>
+
+                    <div class="skill-name">
+                        Cún con
+                    </div>
+
+                    <div class="skill-description">
+                        Kháng cự gần như bằng 0.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- RICE -->
+
+            <div
+                class="skill-card"
+                onclick="openSkillPopup('rice')"
+            >
+
+                <div class="skill-icon">
+                    🍚
+                </div>
+
+                <div class="skill-info">
+
+                    <div class="skill-type">
+                        PASSIVE
+                    </div>
+
+                    <div class="skill-name">
+                        Nội tại cơm
+                    </div>
+
+                    <div class="skill-description">
+                        Tăng sức mạnh khi được
+                        ăn thật nhiều cơm.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =================================================
+             CENTER CHARACTER
+        ================================================== -->
+
+        <div class="character-card">
+
+            <div class="character-glow"></div>
+
+
+            <div class="character-image-frame">
+
+                <img
+                    src="images/doran.jpg"
+                    alt="Măm Măm Iu"
+                >
+
+            </div>
+
+
+            <div class="name-plate">
+
+                <h2 class="name">
+                    NGHIÊN TRINH
+                </h2>
+
+                <div class="nickname">
+                    MĂM MĂM IU
+                </div>
+
+            </div>
+
+
+            <div class="mini-stats">
+
+                <div class="stat-pill">
+                    ⚔️ PLAYER
+                </div>
+
+                <div class="stat-pill">
+                    💗 LOVER
+                </div>
+
+                <div class="stat-pill">
+                    🐶 DOG LOVER
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             RIGHT SKILLS
+        ================================================== -->
+
+        <div class="skill-column right">
+
+
+            <!-- SPICY -->
+
+            <div
+                class="skill-card"
+                onclick="openSkillPopup('spicy')"
+            >
+
+                <div class="skill-icon">
+                    🌶️
+                </div>
+
+                <div class="skill-info">
+
+                    <div class="skill-type">
+                        PASSIVE
+                    </div>
+
+                    <div class="skill-name">
+                        Không sợ cay
+                    </div>
+
+                    <div class="skill-description">
+                        Càng cay càng muốn
+                        thêm ớt.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- JACKET -->
+
+            <div
+                class="skill-card"
+                onclick="openSkillPopup('jacket')"
+            >
+
+                <div class="skill-icon">
+                    🧥
+                </div>
+
+                <div class="skill-info">
+
+                    <div class="skill-type">
+                        BUGGED
+                    </div>
+
+                    <div class="skill-name">
+                        Áo khoác
+                    </div>
+
+                    <div class="skill-description">
+                        Tính năng đang được
+                        phát triển...
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- MAP -->
+
+            <div
+                class="skill-card"
+                onclick="openSkillPopup('map')"
+            >
+
+                <div class="skill-icon">
+                    🗺️
+                </div>
+
+                <div class="skill-info">
+
+                    <div class="skill-type">
+                        SPECIAL
+                    </div>
+
+                    <div class="skill-name">
+                        Check Map
+                    </div>
+
+                    <div class="skill-description">
+                        GPS của anh hoạt động
+                        bằng niềm tin.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SELF CRITICISM -->
+
+            <div
+                class="skill-card"
+                onclick="openSkillPopup('mind')"
+            >
+
+                <div class="skill-icon">
+                    🧠
+                </div>
+
+                <div class="skill-info">
+
+                    <div class="skill-type">
+                        PASSIVE
+                    </div>
+
+                    <div class="skill-name">
+                        Self-Criticism
+                    </div>
+
+                    <div class="skill-description">
+                        MAX LEVEL.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         SECRET PASSIVE
+    ================================================== -->
+
+    <div class="passive-card">
+
+        <div class="passive-label">
+            ✦ UNIQUE PASSIVE ✦
+        </div>
+
+        <div class="passive-main">
+            ❤️ Bạn gái:
+            <span>1 người</span>
+        </div>
+
+        <div class="passive-sub">
+            Tình trạng: Không cho đổi. 😂
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         NEXT SECTION
+    ================================================== -->
+
+   <div
+    class="next-section"
+    onclick="goToPage3()"
+    role="button"
+    tabindex="0"
+    aria-label="Đi đến Our Little Memories"
+>
+
+    <div class="next-text">
+        📸 OUR LITTLE MEMORIES
+    </div>
+
+    <div class="next-arrow">
+        ↓
+    </div>
+
+</div>
+
+
+</main>
+
+
+<!-- =================================================
+     SKILL POPUP
+================================================= -->
+
+<div
+    class="skill-popup-overlay"
+    id="skillPopup"
+    onclick="closeSkillPopupOutside(event)"
+>
+
+    <div
+        class="skill-popup"
+        onclick="event.stopPropagation()"
+    >
+
+        <button
+            class="skill-popup-close"
+            onclick="closeSkillPopup()"
+            aria-label="Đóng"
+        >
+            ×
+        </button>
+
+
+        <div
+            class="skill-popup-title"
+            id="skillPopupTitle"
+        >
+            SKILL
+        </div>
+
+
+        <div
+            class="skill-popup-gallery"
+            id="skillPopupGallery"
+        >
+
+            <button
+                class="skill-popup-nav skill-popup-prev"
+                id="skillPopupPrev"
+                onclick="previousSkillImage()"
+                aria-label="Ảnh trước"
+            >
+                ‹
+            </button>
+
+
+            <div class="skill-popup-image">
+
+                <img
+                    id="skillPopupImage"
+                    src=""
+                    alt="Skill"
+                    draggable="false"
+                >
+
+            </div>
+
+
+            <button
+                class="skill-popup-nav skill-popup-next"
+                id="skillPopupNext"
+                onclick="nextSkillImage()"
+                aria-label="Ảnh tiếp theo"
+            >
+                ›
+            </button>
+
+        </div>
+
+
+        <div
+            class="skill-popup-counter"
+            id="skillPopupCounter"
+        >
+            1 / 1
+        </div>
+
+
+        <div
+            class="skill-popup-text"
+            id="skillPopupText"
+        ></div>
+
+    </div>
+
+</div>
+
+
+<script>
+function goToPage3() {
+    document.body.classList.add("page-leaving");
+
+    setTimeout(function () {
+        window.location.href = "page3.html";
+    }, 450);
+}
+/* =====================================================
+   SKILL DATA
+   ===================================================== */
+
+const skillData = {
+
+    // SKILL 01 — ĐÁ BANH
+    football: {
+        title: "⚽ SKILL — ĐÁ BANH",
+        images: [
+            "images/skill01-1.jpg",
+            "images/skill01-2.jpg",
+            "images/skill01-3.jpg"
+        ],
+        text: "Ra sân thì anh là cầu thủ. Về nhà thì vẫn là người yêu em. 😂"
+    },
+
+    // SKILL 02 — HÁT
+    sing: {
+        title: "🎤 SKILL — HÁT",
+        images: [
+            "images/skill02-1.jpg",
+            "images/skill02-2.jpg",
+            "images/skill02-3.jpg"
+        ],
+        text: "Giọng hát có thể chưa đạt Grammy... nhưng em vẫn đăng ký làm fanclub. ❤️"
+    },
+
+    // SKILL 03 — CÚN CON
+    dog: {
+        title: "🐶 WEAKNESS — CÚN CON",
+        images: [
+            "images/skill03-1.jpg",
+            "images/skill03-2.jpg",
+            "images/skill03-3.jpg"
+        ],
+        text: "Gặp cún là mọi kỹ năng phòng thủ đều chính thức biến mất. 🐶"
+    },
+
+    // SKILL 04 — NỘI TẠI CƠM
+    rice: {
+        title: "🍚 PASSIVE — NỘI TẠI CƠM",
+        images: [
+            "images/skill04-1.jpg",
+            "images/skill04-2.jpg",
+            "images/skill04-3.jpg"
+        ],
+        text: "Thức ăn là phụ. Cơm mới là nhân vật chính. 😂"
+    },
+
+    // SKILL 05 — KHÔNG SỢ CAY
+    spicy: {
+        title: "🌶️ PASSIVE — KHÔNG SỢ CAY",
+        images: [
+            "images/skill05-1.jpg",
+            "images/skill05-2.jpg",
+            "images/skill05-3.jpg"
+        ],
+        text: "Miệng nói không cay. Tay vẫn xin thêm ớt. Em chịu. 🤡"
+    },
+
+    // SKILL 06 — ÁO KHOÁC
+    jacket: {
+        title: "🧥 BUGGED — ÁO KHOÁC",
+        images: [
+            "images/skill06-1.jpg",
+            "images/skill06-2.jpg",
+            "images/skill06-3.jpg"
+        ],
+        text: "Tính năng mặc áo khoác đang được đội ngũ phát triển nghiên cứu. 😂"
+    },
+
+    // SKILL 07 — CHECK MAP
+    map: {
+        title: "🗺️ SPECIAL — CHECK MAP",
+        images: [
+            "images/skill07-1.jpg",
+            "images/skill07-2.jpg",
+            "images/skill07-3.jpg"
+        ],
+        text: "GPS hoạt động bằng niềm tin. Google Maps cũng bó tay. 😂"
+    },
+
+    // SKILL 08 — SELF-CRITICISM
+    mind: {
+        title: "🧠 PASSIVE — SELF-CRITICISM",
+        images: [
+            "images/skill08-1.jpg",
+            "images/skill08-2.jpg",
+            "images/skill08-3.jpg"
+        ],
+        text: "Skill này đạt MAX LEVEL rồi. Nhưng em vẫn muốn anh nhẹ nhàng với bản thân hơn. ❤️"
+    }
+
+};
+
+/* =====================================================
+   STATE
+===================================================== */
+
+let currentSkill = null;
+
+let currentImageIndex = 0;
+
+let touchStartX = 0;
+
+let touchEndX = 0;
+
+
+/* =====================================================
+   SHOW IMAGE
+===================================================== */
+
+function showSkillImage(index) {
+
+    if (!currentSkill) {
+        return;
+    }
+
+
+    const data =
+        skillData[currentSkill];
+
+
+    if (
+        !data ||
+        !data.images ||
+        data.images.length === 0
+    ) {
+        return;
+    }
+
+
+    const totalImages =
+        data.images.length;
+
+
+    if (index < 0) {
+        index = totalImages - 1;
+    }
+
+
+    if (index >= totalImages) {
+        index = 0;
+    }
+
+
+    currentImageIndex = index;
+
+
+    const image =
+        document.getElementById(
+            "skillPopupImage"
+        );
+
+
+    const counter =
+        document.getElementById(
+            "skillPopupCounter"
+        );
+
+
+    const prevButton =
+        document.getElementById(
+            "skillPopupPrev"
+        );
+
+
+    const nextButton =
+        document.getElementById(
+            "skillPopupNext"
+        );
+
+
+    image.src =
+        data.images[currentImageIndex];
+
+
+    if (totalImages > 1) {
+
+        counter.textContent =
+            (currentImageIndex + 1)
+            + " / "
+            + totalImages;
+
+
+        counter.classList.add(
+            "show"
+        );
+
+
+        prevButton.classList.add(
+            "show"
+        );
+
+
+        nextButton.classList.add(
+            "show"
+        );
+
+    }
+
+    else {
+
+        counter.classList.remove(
+            "show"
+        );
+
+
+        prevButton.classList.remove(
+            "show"
+        );
+
+
+        nextButton.classList.remove(
+            "show"
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   NEXT IMAGE
+===================================================== */
+
+function nextSkillImage() {
+
+    if (!currentSkill) {
+        return;
+    }
+
+
+    const data =
+        skillData[currentSkill];
+
+
+    if (
+        !data ||
+        data.images.length <= 1
+    ) {
+        return;
+    }
+
+
+    showSkillImage(
+        currentImageIndex + 1
+    );
+
+}
+
+
+/* =====================================================
+   PREVIOUS IMAGE
+===================================================== */
+
+function previousSkillImage() {
+
+    if (!currentSkill) {
+        return;
+    }
+
+
+    const data =
+        skillData[currentSkill];
+
+
+    if (
+        !data ||
+        data.images.length <= 1
+    ) {
+        return;
+    }
+
+
+    showSkillImage(
+        currentImageIndex - 1
+    );
+
+}
+
+
+/* =====================================================
+   OPEN POPUP
+===================================================== */
+
+function openSkillPopup(skill) {
+
+    const data =
+        skillData[skill];
+
+
+    if (!data) {
+        return;
+    }
+
+
+    const popup =
+        document.getElementById(
+            "skillPopup"
+        );
+
+
+    const title =
+        document.getElementById(
+            "skillPopupTitle"
+        );
+
+
+    const text =
+        document.getElementById(
+            "skillPopupText"
+        );
+
+
+    currentSkill = skill;
+
+    currentImageIndex = 0;
+
+
+    title.textContent =
+        data.title;
+
+
+    text.textContent =
+        data.text;
+
+
+    showSkillImage(0);
+
+
+    popup.classList.add(
+        "show"
+    );
+
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+/* =====================================================
+   CLOSE POPUP
+===================================================== */
+
+function closeSkillPopup() {
+
+    const popup =
+        document.getElementById(
+            "skillPopup"
+        );
+
+
+    popup.classList.remove(
+        "show"
+    );
+
+
+    document.body.style.overflow =
+        "";
+
+
+    currentSkill = null;
+
+    currentImageIndex = 0;
+
+}
+
+
+/* =====================================================
+   CLICK OUTSIDE
+===================================================== */
+
+function closeSkillPopupOutside(event) {
+
+    if (
+        event.target.id ===
+        "skillPopup"
+    ) {
+
+        closeSkillPopup();
+
+    }
+
+}
+
+
+/* =====================================================
+   KEYBOARD
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key ===
+            "Escape"
+        ) {
+
+            closeSkillPopup();
+
+        }
+
+
+        if (
+            event.key ===
+            "ArrowRight" &&
+            currentSkill
+        ) {
+
+            nextSkillImage();
+
+        }
+
+
+        if (
+            event.key ===
+            "ArrowLeft" &&
+            currentSkill
+        ) {
+
+            previousSkillImage();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   SWIPE MOBILE
+===================================================== */
+
+const skillPopupGallery =
+    document.getElementById(
+        "skillPopupGallery"
+    );
+
+
+skillPopupGallery.addEventListener(
+    "touchstart",
+    function(event) {
+
+        touchStartX =
+            event.changedTouches[0]
+            .screenX;
+
+    },
+    {
+        passive: true
+    }
+);
+
+
+skillPopupGallery.addEventListener(
+    "touchend",
+    function(event) {
+
+        touchEndX =
+            event.changedTouches[0]
+            .screenX;
+
+        handleSwipe();
+
+    },
+    {
+        passive: true
+    }
+);
+
+
+function handleSwipe() {
+
+    const swipeDistance =
+        touchEndX -
+        touchStartX;
+
+
+    if (
+        Math.abs(swipeDistance) <
+        50
+    ) {
+
+        return;
+
+    }
+
+
+    if (
+        swipeDistance < 0
+    ) {
+
+        nextSkillImage();
+
+    }
+
+    else {
+
+        previousSkillImage();
+
+    }
+
+}
+
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    document.querySelectorAll("a").forEach(function (link) {
+
+        link.addEventListener("click", function (event) {
+
+            const destination = link.getAttribute("href");
+
+            if (
+                !destination ||
+                destination.startsWith("#") ||
+                destination.startsWith("http") ||
+                link.target === "_blank"
+            ) {
+                return;
+            }
+
+            event.preventDefault();
+
+            document.body.classList.add("page-leaving");
+
+            setTimeout(function () {
+                window.location.href = destination;
+            }, 450);
+
+        });
+
+    });
+
+});
+</script>
+</body>
+
+</html>
+```
