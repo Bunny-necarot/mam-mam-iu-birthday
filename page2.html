@@ -1194,6 +1194,8 @@ body::after {
     user-select: none;
 
     -webkit-user-drag: none;
+opacity: 0;
+transition: opacity .15s ease;
 }
 
 .skill-popup-nav {
@@ -1991,6 +1993,7 @@ const skillData = {
 let currentSkill = null;
 
 let currentImageIndex = 0;
+let imageRequestId = 0;
 
 let touchStartX = 0;
 
@@ -2001,114 +2004,66 @@ let touchEndX = 0;
    SHOW IMAGE
 ===================================================== */
 
+
 function showSkillImage(index) {
 
-    if (!currentSkill) {
+    if (!currentSkill) return;
+
+    const data = skillData[currentSkill];
+
+    if (!data || !data.images || data.images.length === 0) {
         return;
     }
 
+    const totalImages = data.images.length;
 
-    const data =
-        skillData[currentSkill];
-
-
-    if (
-        !data ||
-        !data.images ||
-        data.images.length === 0
-    ) {
-        return;
-    }
-
-
-    const totalImages =
-        data.images.length;
-
-
-    if (index < 0) {
-        index = totalImages - 1;
-    }
-
-
-    if (index >= totalImages) {
-        index = 0;
-    }
-
+    if (index < 0) index = totalImages - 1;
+    if (index >= totalImages) index = 0;
 
     currentImageIndex = index;
 
+    const image = document.getElementById("skillPopupImage");
+    const counter = document.getElementById("skillPopupCounter");
+    const prevButton = document.getElementById("skillPopupPrev");
+    const nextButton = document.getElementById("skillPopupNext");
 
-    const image =
-        document.getElementById(
-            "skillPopupImage"
-        );
+    const requestId = ++imageRequestId;
+    const imageUrl = data.images[currentImageIndex];
 
+    // Ẩn ảnh cũ ngay lập tức
+    image.style.opacity = "0";
 
-    const counter =
-        document.getElementById(
-            "skillPopupCounter"
-        );
+    // Chỉ hiện ảnh khi ảnh mới tải xong
+    image.onload = function () {
+        if (requestId !== imageRequestId) return;
+        image.style.opacity = "1";
+    };
 
+    image.onerror = function () {
+        if (requestId !== imageRequestId) return;
+        image.style.opacity = "1";
+    };
 
-    const prevButton =
-        document.getElementById(
-            "skillPopupPrev"
-        );
+    // Thay bằng ảnh mới
+    image.src = imageUrl;
 
-
-    const nextButton =
-        document.getElementById(
-            "skillPopupNext"
-        );
-
-
-    image.src =
-        data.images[currentImageIndex];
-
+    // Nếu ảnh đã nằm trong cache thì hiện ngay
+    if (image.complete && image.naturalWidth > 0) {
+        image.style.opacity = "1";
+    }
 
     if (totalImages > 1) {
-
-        counter.textContent =
-            (currentImageIndex + 1)
-            + " / "
-            + totalImages;
-
-
-        counter.classList.add(
-            "show"
-        );
-
-
-        prevButton.classList.add(
-            "show"
-        );
-
-
-        nextButton.classList.add(
-            "show"
-        );
-
+        counter.textContent = (currentImageIndex + 1) + " / " + totalImages;
+        counter.classList.add("show");
+        prevButton.classList.add("show");
+        nextButton.classList.add("show");
+    } else {
+        counter.classList.remove("show");
+        prevButton.classList.remove("show");
+        nextButton.classList.remove("show");
     }
-
-    else {
-
-        counter.classList.remove(
-            "show"
-        );
-
-
-        prevButton.classList.remove(
-            "show"
-        );
-
-
-        nextButton.classList.remove(
-            "show"
-        );
-
-    }
-
 }
+
 
 
 /* =====================================================
@@ -2207,6 +2162,11 @@ function openSkillPopup(skill) {
     currentSkill = skill;
 
     currentImageIndex = 0;
+// Tải trước các ảnh còn lại của Skill đang mở
+data.images.slice(1).forEach(function (src) {
+    const preloadImage = new Image();
+    preloadImage.src = src;
+});
 
 
     title.textContent =
@@ -2431,4 +2391,3 @@ document.addEventListener("DOMContentLoaded", function () {
 </body>
 
 </html>
-```
