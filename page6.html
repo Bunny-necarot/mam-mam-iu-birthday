@@ -495,7 +495,7 @@ body {
     margin-bottom: 20px;
 }
 
-.music-card audio {
+.music-card Audio {
     width: 100%;
     display: block;
 }
@@ -916,17 +916,17 @@ body {
             
         </p>
 
-        <audio
+        <Audio
             id="secretGiftAudio"
             controls
             preload="metadata"
         >
             <source
-                src="audio/secretgift.mp3"
-                type="audio/mpeg"
+                src="Audio/secretgift.mp3"
+                type="Audio/mpeg"
             >
             Trình duyệt không hỗ trợ phát nhạc.
-        </audio>
+        </Audio>
 
     </div>
 
@@ -997,7 +997,7 @@ body {
     const gift = document.getElementById("p6Gift");
 
     const musicBox = document.getElementById("secretVideoBox");
-    const audio = document.getElementById("secretGiftAudio");
+    const Audio = document.getElementById("secretGiftAudio");
 
     const finalMessage = document.getElementById("finalMessage");
 
@@ -1065,7 +1065,7 @@ body {
 
         setTimeout(function () {
 
-            audio.play().catch(function () {
+            Audio.play().catch(function () {
                 // Nếu trình duyệt chặn tự phát, người xem bấm Play thủ công.
             });
 
@@ -1075,7 +1075,7 @@ body {
 
 
     /* NHẠC KẾT THÚC -> HIỆN LỜI CHÚC CUỐI */
-    audio.addEventListener("ended", function () {
+    Audio.addEventListener("ended", function () {
 
         finalMessage.classList.add("show");
 
